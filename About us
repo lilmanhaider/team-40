@@ -2,5 +2,7 @@
 <html lang="en">
   <head>
     <meta charset= "UTF-8" />
-    <h1> About us </h1>
-  <head>
+    <h1> About us</h1>
+    <a href=HomePage.html> Home <a href=ProductPage.html > Products</a> </a>
+  </head>
+</html>
