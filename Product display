@@ -1,1 +1,8 @@
-
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset= "UTF-8" />
+    <h1> Products </h1>
+    <a href=HomePage.html> Home <a href=AboutUs.html> About Us</a>
+  </head>
+</html>

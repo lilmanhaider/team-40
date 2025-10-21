@@ -3,4 +3,6 @@
   <head>
     <meta charset= "UTF-8" />
     <h1> Tech4FourU </h1>
-  <head>
+    <a href=AboutUs.html> About Us <a href=ProductPage.html > Products</a> </a>
+  </head>
+</html>
