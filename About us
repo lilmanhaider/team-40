@@ -1,8 +1,16 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
+    <style>
+      h1{
+        text-align: center;
+      }
+      h2{
+        text-align: center;
+      }
+      </style>
     <meta charset= "UTF-8" />
     <h1> About us</h1>
-    <a href=HomePage.html> Home <a href=ProductPage.html > Products</a> </a>
+    <h2><a href=HomePage.html style="margin-right: 20px;"> Home <a href=ProductPage.html > Products</a> </a> </h2>
   </head>
 </html>
