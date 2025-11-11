@@ -20,7 +20,7 @@ if (isset($_POST['submitted'])) {
                 session_start();
                 $_SESSION["username"] = $_POST['username'];
                 $_SESSION["uid"] = $row['uid']; 
-                header("Location: ");
+                header("<Location:homepage class="html"></Location:homepage> ");
                 exit();
             } else {
                 echo "<p style='color:red'>Error logging in, password does not match</p>";
