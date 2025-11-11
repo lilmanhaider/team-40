@@ -4,18 +4,12 @@ if (isset($_POST['submitted'])) {
         echo 'Please fill out all the required fields';
         exit;
     }
-    
-
-
     require_once("connectdb.php");
-
     try {
         $stat = $db->prepare('SELECT password, uid FROM users WHERE username = ?');
         $stat->execute(array($_POST['username']));
-
         if ($stat->rowCount() > 0) {
             $row = $stat->fetch();
-
             if (password_verify($_POST['password'], $row['password'])) {
                 session_start();
                 $_SESSION["username"] = $_POST['username'];
@@ -93,4 +87,5 @@ if (isset($_POST['submitted'])) {
         <br>
         <p>Not a user? <a href="register.php">Register Now!</a></p>
     </body>
+
 </html>
