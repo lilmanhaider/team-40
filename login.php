@@ -40,7 +40,7 @@ if (isset($_POST['submitted'])) {
             background-color: lightblue;
             }
 
-            h2 {
+            h2{
             color: black;
             text-align: center;
             }
