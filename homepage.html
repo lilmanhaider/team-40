@@ -18,12 +18,17 @@ body{
   background:#f5f6fa;
 }
 
-/* NAV */
 nav{
   width:100%;
   padding:16px 8%;
   display:flex;
-op:0;
+  align-items:center;
+  justify-content:space-between;
+  background:white;
+  border-bottom:1px solid #eee;
+  position:sticky;
+  top:0;
+  z-index:999;
 }
 
 nav .logo{
@@ -33,41 +38,47 @@ nav .logo{
 }
 
 nav .logo img{
-  height:45px;    /* ← adjust logo size here */
+  height:55px;
   width:auto;
 }
 
 nav ul{
+  margin-left:auto;
   display:flex;
   gap:30px;
   list-style:none;
+  align-items:center;
 }
 
 nav ul li a{
   text-decoration:none;
   color:#444;
   font-size:1rem;
-  transition:.3s;
+  transition:0.3s;
+  display:flex;
+  align-items:center;
+  gap:4px;
 }
 
 nav ul li a:hover{
   color:#0077ff;
-}  align-items:center;
-  justify-content:space-between;
-  background:white;
-  border-bottom:1px solid #eee;
-  position:sticky;
-  t
+}
 
-/* HERO */
+.nav-icon{
+  font-size:1.05rem;
+}
+
 .hero{
   width:100%;
   padding:110px 8%;
-  background:#eaf1ff;
+  background: url("./images/index/Logo.jpg") right/contain no-repeat;  
+  background-color:#eef9b3; 
   display:flex;
   flex-direction:column;
   gap:15px;
+  min-height:350px;
 }
+
 
 .hero h1{
   font-size:2.9rem;
@@ -81,9 +92,9 @@ nav ul li a:hover{
 }
 
 .hero button{
-  margin-top:20px;
-  padding:15px 36px;
-  background:#45cc7f;
+  margin-top:45px;
+  padding:15px 250px;
+  background:#50ce29;
   border:none;
   border-radius:8px;
   color:white;
@@ -93,7 +104,7 @@ nav ul li a:hover{
 }
 
 .hero button:hover{
-  background:#50ce29;
+  background:#45cc7f;
 }
 
 /* CARDS */
@@ -151,30 +162,45 @@ footer{
 </head>
 <body>
 
-<!-- NAV -->
 <nav>
   <div class="logo">
-    <img src="./images/index/Logo.jpg" alt="logo">
+    <img src="lilmanhaider/team-40/images/index/Logo.jpg" alt="Tech4ForU Logo">
   </div>
 
   <ul>
-    <li><a href="#">Home</a></li>
-    <li><a href="#">Services</a></li>
-    <li><a href="#">About</a></li>
-    <li><a href="#">Contact</a></li>
+    <li><a href="ProductPage.html">Product Page</a></li>
+    <li><a href="AboutUs.html">About Us</a></li>
+     <li><a href="ContactUs.html">Contact Us</a></li>
+
+
+    <li>
+      <a href="profile.php">
+        <span class="nav-icon">👤</span>
+        Profile
+      </a>
+    </li>
+
+    <li>
+      <a href="cart.php">
+        <span class="nav-icon">🛒</span>
+        Cart
+      </a>
+    </li>
   </ul>
 </nav>
 
 
 <!-- HERO -->
 <section class="hero">
-  <h1>We help you find the best modern solutions fast</h1>
-  <p>Modern, clean landing page that is responsive and fast.</p>
-  <button>Get Started</button>
+    <div>
+  <h1>The best place to buy Gaming Tech & more!</h1>
+  <p>Powering Your Gaming Experience, One Upgrade at a Time..</p>
+  <button>Shop Us</button>
+  </div>
 </section>
 
 
-<!-- CARDS -->
+
 <h2 class="section-title">Our Services</h2>
 
 <div class="card-container">
@@ -204,4 +230,3 @@ footer{
 
 </body>
 </html>
-
