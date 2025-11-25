@@ -70,7 +70,7 @@ nav ul li a:hover{
 
 .hero{
   width:100%;
-  padding:110px 8%;
+  padding: 200px 8%;
   background: url("./images/index/Logo.jpg") right/contain no-repeat;  
   background-color:#eef9b3; 
   display:flex;
@@ -91,7 +91,7 @@ nav ul li a:hover{
   color:#444;
 }
 
-.hero button{
+.hero-btn{
   margin-top:45px;
   padding:15px 250px;
   background:#50ce29;
@@ -101,52 +101,17 @@ nav ul li a:hover{
   font-size:1rem;
   cursor:pointer;
   transition:.3s;
+  text-decoration:none;
+  display:inline-block;
+  text-align:center;
 }
 
-.hero button:hover{
+.hero-btn:hover{
   background:#45cc7f;
 }
 
-/* CARDS */
-.section-title{
-  text-align:center;
-  font-size:1.9rem;
-  margin-top:70px;
-  margin-bottom:15px;
-}
 
-.card-container{
-  width:100%;
-  padding:0 8% 70px;
-  display:grid;
-  gap:30px;
-  grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
-}
 
-.card{
-  padding:25px;
-  border-radius:12px;
-  background:white;
-  border:1px solid #eee;
-  transition:.3s;
-}
-
-.card:hover{
-  transform:translateY(-4px);
-  box-shadow:0 12px 32px rgba(0,0,0,0.06);
-}
-
-.card h3{
-  margin-bottom:6px;
-}
-
-.card p{
-  font-size:.95rem;
-  color:#555;
-  line-height:1.5;
-}
-
-/* FOOTER */
 footer{
   width:100%;
   text-align:center;
@@ -156,6 +121,55 @@ footer{
   margin-top:40px;
   font-size:.95rem;
 }
+.features-strip{
+  width:100%;
+  padding:60px 8%;
+  background:#f3f6ff;
+  display:grid;
+  grid-template-columns: repeat(auto-fit,minmax(220px,1fr));
+  gap:35px;
+  text-align:center;
+}
+
+.feature-card{
+  background:white;
+  padding:35px 25px;
+  border-radius:14px;
+  border:1px solid #e5e8ef;
+  transition:.3s;
+}
+
+.feature-card:hover{
+  transform:translateY(-5px);
+  box-shadow:0 14px 34px rgba(0,0,0,.08);
+}
+
+.feature-card .icon{
+  width:70px;
+  height:70px;
+  border-radius:50%;
+  background:white;
+  border:2px solid #dce1ef;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-size:2rem;
+  margin:0 auto 18px;
+}
+
+
+
+.feature-card h3{
+  margin-bottom:6px;
+  font-size:1.15rem;
+  color:#111;
+}
+
+.feature-card p{
+  color:#555;
+  font-size:.9rem;
+}
+
 
 </style>
 
@@ -190,43 +204,49 @@ footer{
 </nav>
 
 
-<!-- HERO -->
+
 <section class="hero">
     <div>
   <h1>The best place to buy Gaming Tech & more!</h1>
   <p>Powering Your Gaming Experience, One Upgrade at a Time..</p>
-  <button>Shop Us</button>
+<a href="ProductPage.html" class="hero-btn">Shop Now</a>
   </div>
 </section>
 
 
 
-<h2 class="section-title">Our Services</h2>
+<section class="features-strip">
 
-<div class="card-container">
-
-  <div class="card">
-    <h3>Consulting</h3>
-    <p>Expert tailored advice to accelerate your goals.</p>
+  <div class="feature-card">
+    <div class="icon">🚚</div>
+    <h3>Free Shipping</h3>
+    <p>On all orders over £50</p>
   </div>
 
-  <div class="card">
-    <h3>Design</h3>
-    <p>Clean and modern UI and UX built for conversion.</p>
+  <div class="feature-card">
+    <div class="icon">🔒</div>
+    <h3>Secure Payments</h3>
+    <p>100% encrypted checkout</p>
   </div>
 
-  <div class="card">
-    <h3>Development</h3>
-    <p>Modern applications delivered with speed and quality.</p>
+  <div class="feature-card">
+    <div class="icon">🔁</div>
+    <h3>Easy Returns</h3>
+    <p>30-day return policy</p>
   </div>
 
-</div>
+  <div class="feature-card">
+    <div class="icon">🎧</div>
+    <h3>24/7 Support</h3>
+    <p>Dedicated help anytime</p>
+  </div>
+
+</section>
 
 
-<!-- FOOTER -->
-<footer>
-  © 2025 MyWebsite — All rights reserved.
-</footer>
+
+
+
 
 </body>
 </html>
