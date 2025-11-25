@@ -1,77 +1,235 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <style>
-      h1{
-        text-align: center;
-      }
-      h2{
-        text-align: center;
-      }
-    </style>
-    <meta charset= "UTF-8" />
-    <h1> Products  </h1>
-    <h2><a href=HomePage.html style="margin-right: 20px;"> Home <a href=AboutUs.html> About Us</a> </h2>
-    <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Gaming Store - Products</title>
-  <style>
-    body { font-family: Arial, sans-serif; margin: 0; padding: 0; background-color: #f5f5f5; }
-    header { background-color: #333; color: white; text-align: center; padding: 1em; }
-    h1 { margin: 0; }
-    .container { max-width: 900px; margin: 20px auto; background: white; padding: 20px; border-radius: 8px; }
-    h2 { border-bottom: 2px solid #333; padding-bottom: 5px; }
-    .product { display: flex; justify-content: space-between; border-bottom: 1px solid #ddd; padding: 10px 0; }
-    .product:last-child { border: none; }
-    .name { font-weight: bold; }
-    .price { color: green; }
-  </style>
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Modern Homepage</title>
+
+<style>
+
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+  font-family:"Poppins",sans-serif;
+}
+
+body{
+  background:#f5f6fa;
+}
+
+nav{
+  width:100%;
+  padding:16px 8%;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  background:white;
+  border-bottom:1px solid #eee;
+  position:sticky;
+  top:0;
+  z-index:999;
+}
+
+nav .logo{
+  display:flex;
+  align-items:center;
+  gap:10px;
+}
+
+nav .logo img{
+  height:55px;
+  width:auto;
+}
+
+nav ul{
+  margin-left:auto;
+  display:flex;
+  gap:30px;
+  list-style:none;
+  align-items:center;
+}
+
+nav ul li a{
+  text-decoration:none;
+  color:#444;
+  font-size:1rem;
+  transition:0.3s;
+  display:flex;
+  align-items:center;
+  gap:4px;
+}
+
+nav ul li a:hover{
+  color:#0077ff;
+}
+
+.nav-icon{
+  font-size:1.05rem;
+}
+
+.hero{
+  width:100%;
+  padding:110px 8%;
+  background: url("./images/index/Logo.jpg") right/contain no-repeat;  
+  background-color:#eef9b3; 
+  display:flex;
+  flex-direction:column;
+  gap:15px;
+  min-height:350px;
+}
+
+
+.hero h1{
+  font-size:2.9rem;
+  max-width:600px;
+}
+
+.hero p{
+  font-size:1.1rem;
+  max-width:520px;
+  color:#444;
+}
+
+.hero-btn{
+  margin-top:45px;
+  padding:15px 250px;
+  background:#50ce29;
+  border:none;
+  border-radius:8px;
+  color:white;
+  font-size:1rem;
+  cursor:pointer;
+  transition:.3s;
+  text-decoration:none;
+  display:inline-block;
+  text-align:center;
+}
+
+.hero-btn:hover{
+  background:#45cc7f;
+}
+
+/* CARDS */
+.section-title{
+  text-align:center;
+  font-size:1.9rem;
+  margin-top:70px;
+  margin-bottom:15px;
+}
+
+.card-container{
+  width:100%;
+  padding:0 8% 70px;
+  display:grid;
+  gap:30px;
+  grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+}
+
+.card{
+  padding:25px;
+  border-radius:12px;
+  background:white;
+  border:1px solid #eee;
+  transition:.3s;
+}
+
+.card:hover{
+  transform:translateY(-4px);
+  box-shadow:0 12px 32px rgba(0,0,0,0.06);
+}
+
+.card h3{
+  margin-bottom:6px;
+}
+
+.card p{
+  font-size:.95rem;
+  color:#555;
+  line-height:1.5;
+}
+
+/* FOOTER */
+footer{
+  width:100%;
+  text-align:center;
+  background:#111;
+  color:white;
+  padding:35px;
+  margin-top:40px;
+  font-size:.95rem;
+}
+
+</style>
+
 </head>
 <body>
-  <header>
-    <h1>Gaming Store</h1>
-  </header>
-  <div class="container">
-    <h2>Games</h2>
-    <div class="product"><div class="name">Shadowforge: Requiem</div><div class="price">£59.99</div></div>
-    <div class="product"><div class="name">Galactic Drift Racing</div><div class="price">£49.99</div></div>
-    <div class="product"><div class="name">Mystic Valley</div><div class="price">£39.99</div></div>
-    <div class="product"><div class="name">Battlefront: Vanguard</div><div class="price">£69.99</div></div>
-    <div class="product"><div class="name">Puzzle Planet</div><div class="price">£19.99</div></div>
 
-    <h2>Accessories</h2>
-    <div class="product"><div class="name">Ergo Controller Grip</div><div class="price">£9.99</div></div>
-    <div class="product"><div class="name">Wireless Charger</div><div class="price">£29.99</div></div>
-
-    <h2>Controllers</h2>
-    <div class="product"><div class="name">Carbon Black Controller</div><div class="price">£59.99</div></div>
-    <div class="product"><div class="name">Access+ Adaptive Controller</div><div class="price">£99.99</div></div>
-    <div class="product"><div class="name">Racer Steering Wheel</div><div class="price">£129.99</div></div>
-
-    <h2>Consoles</h2>
-    <div class="product"><div class="name">PlayStation 5</div><div class="price">£499.00</div></div>
-    <div class="product"><div class="name">Xbox Series X</div><div class="price">£499.00</div></div>
-    <div class="product"><div class="name">Nintendo Switch</div><div class="price">£349.00</div></div>
-    <div class="product"><div class="name">Nintendo 64 (Retro)</div><div class="price">£149.00</div></div>
-    <div class="product"><div class="name">Wii (Retro)</div><div class="price">£119.00</div></div>
-
-    <h2>Computers</h2>
-    <div class="product"><div class="name">Aurora Xtreme Desktop</div><div class="price">£1999.00</div></div>
-    <div class="product"><div class="name">Falcon 15 Gaming Laptop</div><div class="price">£1599.00</div></div>
-    <div class="product"><div class="name">NVIDIA RTX 4070 GPU</div><div class="price">£599.00</div></div>
-    <div class="product"><div class="name">Ryzen 7 7800X CPU</div><div class="price">£319.00</div></div>
-    <div class="product"><div class="name">32GB DDR5 RAM</div><div class="price">£149.00</div></div>
-
-    <h2>Hardware + Accessories</h2>
-    <div class="product"><div class="name">27" 144Hz Monitor</div><div class="price">£249.00</div></div>
-    <div class="product"><div class="name">HDMI 2.1 Cable</div><div class="price">£14.99</div></div>
-    <div class="product"><div class="name">128GB USB Memory Stick</div><div class="price">£24.99</div></div>
-
-    <h2>Software & Security</h2>
-    <div class="product"><div class="name">GameSecure Antivirus</div><div class="price">£29.99</div></div>
-    <div class="product"><div class="name">Premium Game Pass (3 months)</div><div class="price">£29.99</div></div>
+<nav>
+  <div class="logo">
+    <img src="lilmanhaider/team-40/images/index/Logo.jpg" alt="Tech4ForU Logo">
   </div>
+
+  <ul>
+    <li><a href="ProductPage.html">Product Page</a></li>
+    <li><a href="AboutUs.html">About Us</a></li>
+     <li><a href="ContactUs.html">Contact Us</a></li>
+
+
+    <li>
+      <a href="profile.php">
+        <span class="nav-icon">👤</span>
+        Profile
+      </a>
+    </li>
+
+    <li>
+      <a href="cart.php">
+        <span class="nav-icon">🛒</span>
+        Cart
+      </a>
+    </li>
+  </ul>
+</nav>
+
+
+<!-- HERO -->
+<section class="hero">
+    <div>
+  <h1>The best place to buy Gaming Tech & more!</h1>
+  <p>Powering Your Gaming Experience, One Upgrade at a Time..</p>
+<a href="ProductPage.html" class="hero-btn">Shop Now</a>
+  </div>
+</section>
+
+
+
+<h2 class="section-title">Our Services</h2>
+
+<div class="card-container">
+
+  <div class="card">
+    <h3>Consulting</h3>
+    <p>Expert tailored advice to accelerate your goals.</p>
+  </div>
+
+  <div class="card">
+    <h3>Design</h3>
+    <p>Clean and modern UI and UX built for conversion.</p>
+  </div>
+
+  <div class="card">
+    <h3>Development</h3>
+    <p>Modern applications delivered with speed and quality.</p>
+  </div>
+
+</div>
+
+
+<!-- FOOTER -->
+<footer>
+  © 2025 MyWebsite — All rights reserved.
+</footer>
+
 </body>
-  
-  </head>
 </html>
