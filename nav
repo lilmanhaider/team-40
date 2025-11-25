@@ -58,6 +58,8 @@ nav ul li a:hover{
   <ul>
     <li><a href="ProductPage.html">Product Page</a></li>
     <li><a href="AboutUs.html">About Us</a></li>
+    <li><a href="ContactUs.html">Contact Us</a></li>
+
 
     <li>
       <a href="profile.php">
