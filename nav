@@ -56,9 +56,9 @@ nav ul li a:hover{
   </div>
 
   <ul>
-    <li><a href="ProductPage.html">Product Page</a></li>
-    <li><a href="AboutUs.html">About Us</a></li>
-    <li><a href="ContactUs.html">Contact Us</a></li>
+    <li><a href="ProductPage.php">Product Page</a></li>
+    <li><a href="AboutUs.php">About Us</a></li>
+    <li><a href="ContactUs.php">Contact Us</a></li>
 
 
     <li>
@@ -76,3 +76,4 @@ nav ul li a:hover{
     </li>
   </ul>
 </nav>
+
