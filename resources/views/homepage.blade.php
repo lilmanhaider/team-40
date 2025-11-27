@@ -6,7 +6,6 @@
 <title>Modern Homepage</title>
 
 <style>
-
 *{
   margin:0;
   padding:0;
