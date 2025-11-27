@@ -31,7 +31,7 @@ nav ul{
   align-items:center;
 }
 
-nav ul li a{
+nav ul li a, nav ul li span{
   text-decoration:none;
   color:#444;
   font-size:1rem;
@@ -39,9 +39,11 @@ nav ul li a{
   display:flex;
   align-items:center;
   gap:4px;
+  cursor:pointer;
 }
 
-nav ul li a:hover{
+nav ul li a:hover,
+nav ul li span:hover{
   color:#0077ff;
 }
 
@@ -99,14 +101,8 @@ nav ul li a:hover{
   </div>
 
   <ul>
-<<<<<<< HEAD
     <li><a href="ProductPage.html">Product Page</a></li>
     <li><a href="AboutUs.html">About Us</a></li>
-=======
-    <li><a href="ProductPage.php">Product Page</a></li>
-    <li><a href="AboutUs.php">About Us</a></li>
-    <li><a href="ContactUs.php">Contact Us</a></li>
->>>>>>> b4ebf2e8744f4ea4f6eb3719159ae4d486b26b99
 
     <li>
       <span id="account-btn">Account</span>
@@ -121,7 +117,6 @@ nav ul li a:hover{
   </ul>
 </nav>
 
-<<<<<<< HEAD
 <!-- Account popup so that when clicking account it pops up with something telling you to log in/register if you dont already have an account.-->
 <div id="account-popup">
   <div class="popup-box">
@@ -143,7 +138,3 @@ document.getElementById("close-popup").onclick = function(){
   document.getElementById("account-popup").style.display = "none";
 }
 </script>
-
-=======
-
->>>>>>> b4ebf2e8744f4ea4f6eb3719159ae4d486b26b99
