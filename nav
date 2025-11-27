@@ -35,7 +35,7 @@ nav ul li a{
   text-decoration:none;
   color:#444;
   font-size:1rem;
-  transition:0.3s;
+  transition:.3s;
   display:flex;
   align-items:center;
   gap:4px;
@@ -46,26 +46,70 @@ nav ul li a:hover{
 }
 
 .nav-icon{
-  font-size:1.05rem;
+  font-size:1.2rem;
+}
+
+/* styling for th epopup*/
+#account-popup{
+  display:none;
+  position:fixed;
+  top:0;
+  left:0;
+  width:100%;
+  height:100%;
+  background:rgba(0,0,0,0.4);
+  justify-content:center;
+  align-items:center;
+  z-index:1000;
+}
+
+#account-popup .popup-box{
+  background:white;
+  padding:30px;
+  border-radius:10px;
+  width:300px;
+  text-align:center;
+}
+
+#account-popup button{
+  width:100%;
+  padding:10px;
+  margin-top:15px;
+  border:none;
+  background:#0077ff;
+  color:white;
+  border-radius:6px;
+  cursor:pointer;
+  font-size:1rem;
+}
+
+#account-popup button:hover{
+  background:#005fcc;
+}
+
+#close-popup{
+  margin-top:10px;
+  background:#ccc;
 }
 </style>
 
 <nav>
-  <div class="logo">
-    <img src="lilmanhaider/team-40/images/index/Logo.jpg" alt="Tech4ForU Logo">
+  <div class="logo">  
+    <img src="" alt="Tech4ForU Logo">
   </div>
 
   <ul>
+<<<<<<< HEAD
+    <li><a href="ProductPage.html">Product Page</a></li>
+    <li><a href="AboutUs.html">About Us</a></li>
+=======
     <li><a href="ProductPage.php">Product Page</a></li>
     <li><a href="AboutUs.php">About Us</a></li>
     <li><a href="ContactUs.php">Contact Us</a></li>
-
+>>>>>>> b4ebf2e8744f4ea4f6eb3719159ae4d486b26b99
 
     <li>
-      <a href="profile.php">
-        <span class="nav-icon">👤</span>
-        Profile
-      </a>
+      <span id="account-btn">Account</span>
     </li>
 
     <li>
@@ -77,3 +121,29 @@ nav ul li a:hover{
   </ul>
 </nav>
 
+<<<<<<< HEAD
+<!-- Account popup so that when clicking account it pops up with something telling you to log in/register if you dont already have an account.-->
+<div id="account-popup">
+  <div class="popup-box">
+    <h2>Account</h2>
+    <p>Please choose an option:</p>
+
+    <button onclick="window.location='login.php'">Log In</button>
+    <button onclick="window.location='register.php'">Register</button>
+
+    <button id="close-popup">Close</button>
+  </div>
+</div>
+
+<script>
+document.getElementById("account-btn").onclick = function(){
+  document.getElementById("account-popup").style.display = "flex";
+}
+document.getElementById("close-popup").onclick = function(){
+  document.getElementById("account-popup").style.display = "none";
+}
+</script>
+
+=======
+
+>>>>>>> b4ebf2e8744f4ea4f6eb3719159ae4d486b26b99
