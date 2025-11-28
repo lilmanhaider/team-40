@@ -163,14 +163,13 @@ footer{
 
 <nav>
   <div class="logo">
-    <img src="lilmanhaider/team-40/images/index/Logo.jpg" alt="Tech4ForU Logo">
+    <img src="images/index/Logo.jpg" alt="Tech4ForU Logo">
   </div>
 
   <ul>
-    <li><a href="productpage.blade.php">Product Page</a></li>
-    <li><a href="AboutUs.html">About Us</a></li>
-     <li><a href="ContactUs.html">Contact Us</a></li>
-
+    <li><a href="{{ route('productpage') }}">Product Page</a></li>
+    <li><a href="{{ route('about') }}">About Us</a></li>
+    <li><a href="{{ route('contact') }}">Contact Us</a></li>
 
     <li>
       <a href="profile.php">
