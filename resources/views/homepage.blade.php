@@ -70,7 +70,7 @@ nav ul li a:hover{
 .hero{
   width:100%;
   padding:110px 8%;
-  background: url("./images/index/Logo.jpg") right/contain no-repeat;  
+  background: url("images/index/Logo.jpg") right/contain no-repeat;  
   background-color:#eef9b3; 
   display:flex;
   flex-direction:column;
