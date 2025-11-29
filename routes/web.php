@@ -1,7 +1,8 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\LoginController;
+use App\Http\Controllers\Auth\RegisterController;
+use App\Http\Controllers\Auth\LoginController;
 
 Route::view('/', 'homepage')->name('homepage');
 Route::view('/product', 'productpage')->name('productpage');
@@ -10,6 +11,8 @@ Route::view('/contact', 'contact')->name('contact');
 Route::view('/profile', 'profile')->name('profile');
 Route::view('/cart', 'cart')->name('cart');
 
+Route::get('/register', [RegisterController::class, 'showRegistrationForm'])->name('register');
+Route::post('/register', [RegisterController::class, 'register'])->name('register.post');
 Route::get('/login', [LoginController::class, 'showLoginForm'])->name('login');
 Route::post('/login', [LoginController::class, 'login'])->name('login.post');
 
