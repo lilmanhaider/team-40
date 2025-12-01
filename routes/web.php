@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\Auth\LoginController;
+use App\Http\Controllers\Auth\PasswordController;
 
 Route::view('/', 'homepage')->name('homepage');
 Route::view('/product', 'productpage')->name('productpage');
@@ -15,6 +16,10 @@ Route::get('/register', [RegisterController::class, 'showRegistrationForm'])->na
 Route::post('/register', [RegisterController::class, 'register'])->name('register.post');
 Route::get('/login', [LoginController::class, 'showLoginForm'])->name('login');
 Route::post('/login', [LoginController::class, 'login'])->name('login.post');
+Route::middleware('auth')->group(function () {
+    Route::get('/password/change', [PasswordController::class, 'showChangeForm'])->name('password.change');
+    Route::post('/password/change', [PasswordController::class, 'update'])->name('password.update');
+});
 
 Route::get('/home', function () {
     return "You are logged in!";
