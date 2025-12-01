@@ -22,7 +22,7 @@ class LoginController extends Controller
         ]);
 
         if (Auth::attempt($credentials)) {
-            return redirect()->intended('/home');  // change to your homepage
+            return redirect()->intended('/home');
         }
 
         return back()->withErrors(['email' => 'Invalid login details']);
