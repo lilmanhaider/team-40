@@ -9,7 +9,7 @@ use App\Http\Controllers\ProductController;
 
 Route::view('/', 'homepage')->name('homepage');
 
-Route::get('/products', [ProductController::class, 'index'])->name('products');
+Route::get('/product', [ProductController::class, 'index'])->name('product');
 
 Route::view('/about', 'about')->name('about');
 Route::view('/contact', 'contact')->name('contact');

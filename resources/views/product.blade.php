@@ -143,7 +143,7 @@ nav ul li a:hover{
   </div>
 
   <ul>
-    <li><a href="{{ route('products') }}">Product Page</a></li>
+    <li><a href="{{ route('product') }}">Product Page</a></li>
     <li><a href="{{ route('about') }}">About Us</a></li>
     <li><a href="{{ route('contact') }}">Contact Us</a></li>
     <li><a href="{{ route('profile') }}"><span class="nav-icon">👤</span> Profile</a></li>
