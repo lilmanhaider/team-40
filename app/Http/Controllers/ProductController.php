@@ -9,10 +9,11 @@ class ProductController extends Controller
 {
     public function index()
     {
-        
-        $products = Product::all();
+        $products = Product::all();  // <- correct
 
-        return view('product', ['products' => $products]);
+        return view('product', [
+            'products' => $products
+        ]);
     }
 
     public function search(Request $request)
@@ -23,6 +24,8 @@ class ProductController extends Controller
 
         $products = Product::where('category', $validated['category'])->get();
 
-        return view('product', ['products' => $products]);
+        return view('product', [
+            'products' => $products
+        ]);
     }
 }
