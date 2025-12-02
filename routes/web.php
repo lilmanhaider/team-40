@@ -7,13 +7,13 @@ use App\Http\Controllers\Auth\PasswordController;
 use App\Http\Controllers\ProductController;
 
 
-Route::view('/', 'homepage')->name('homepage');
+Route::view('/', 'home')->name('home');
 
 Route::get('/product', [ProductController::class, 'index'])->name('product');
 
 Route::view('/about', 'about')->name('about');
 Route::view('/contact', 'contact')->name('contact');
-Route::view('/profile', 'profile')->name('profile');
+Route::view('/account', 'account')->name('account');
 Route::view('/cart', 'cart')->name('cart');
 
 Route::get('/register', [RegisterController::class, 'showRegistrationForm'])->name('register');
@@ -27,6 +27,6 @@ Route::middleware('auth')->group(function () {
     Route::post('/password/change', [PasswordController::class, 'update'])->name('password.update');
 });
 
-Route::get('/home', function () {
+Route::get('/test', function () {
     return "You are logged in!";
-})->middleware('auth')->name('home');
+})->middleware('auth')->name('/test');

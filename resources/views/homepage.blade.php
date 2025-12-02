@@ -168,24 +168,15 @@ footer{
   </div>
 
   <ul>
+    <li><a href="{{ route('home') }}">Home</a></li>
     <li><a href="{{ route('product') }}">Product Page</a></li>
     <li><a href="{{ route('about') }}">About Us</a></li>
     <li><a href="{{ route('contact') }}">Contact Us</a></li>
+    <li><a href="{{ route('login') }}">Login</a></li>
+    <li><a href="{{ route('cart') }}">Cart</a></li>
+    
 
-    <li>
-      <a href="profile.php">
-        <span class="nav-icon">👤</span>
-        Profile
-      </a>
-    </li>
-
-    <li>
-      <a href="cart.php">
-        <span class="nav-icon">🛒</span>
-        Cart
-      </a>
-    </li>
-  </ul>
+   
 </nav>
 
 

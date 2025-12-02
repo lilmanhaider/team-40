@@ -170,10 +170,11 @@ nav ul li span:hover{
   </div>
 
   <ul>
-    <li><a href="ProductPage.html">Product Page</a></li>
-    <li><a href="AboutUs.html">About Us</a></li>
-
-    <li><span id="account-btn">Account</span></li>
+    <li><a href="{{ route('product') }}">Product Page</a></li>
+    <li><a href="{{ route('about') }}">About Us</a></li>
+    <li><a href="{{ route('contact') }}">Contact Us</a></li>
+    <li><a href="{{ route('Account') }}">Account</a></li>
+    <li><a href="{{ route('cart') }}">Cart</a></li>
 
     <li>
       <span id="cart-btn">
