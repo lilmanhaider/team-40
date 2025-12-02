@@ -4,9 +4,13 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Auth\PasswordController;
+use App\Http\Controllers\ProductController;
 
 Route::view('/', 'homepage')->name('homepage');
-Route::view('/product', 'productpage')->name('productpage');
+
+Route::get('/product', [ProductController::class, 'index'])
+    ->name('product');
+
 Route::view('/about', 'about')->name('about');
 Route::view('/contact', 'contact')->name('contact');
 Route::view('/profile', 'profile')->name('profile');

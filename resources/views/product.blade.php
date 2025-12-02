@@ -410,145 +410,74 @@ footer{
   </div>
 
   <div class="filters">
-    <button class="filter-btn active" data-category="all">All</button>
-    <button class="filter-btn" data-category="console">Consoles</button>
-    <button class="filter-btn" data-category="game">Games</button>
-    <button class="filter-btn" data-category="accessory">Accessories</button>
-    <button class="filter-btn" data-category="service">Software Services</button>
+    <button class="filter-btn active" category="all">All</button>
+    <button class="filter-btn" category="console">Consoles</button>
+    <button class="filter-btn" category="game">Games</button>
+    <button class="filter-btn" category="accessory">Accessories</button>
+    <button class="filter-btn" category="service">Software Services</button>
   </div>
 </div>
 
 <h2 class="section-title">All Products</h2>
 
 <div class="product-grid" id="productGrid">
-  <?php foreach ($products as $product): ?>
-    <?php
-      $id          = (int)$product['id'];
-      $name        = $product['name'] ?? '';
-      $category    = $product['category'] ?? '';
-      $description = $product['description'] ?? '';
-      $price       = isset($product['price']) ? (float)$product['price'] : 0;
-      $platforms   = $product['platforms'] ?? ''; // e.g. "ps5,xbox_series_x"
+  @forelse ($products as $product)
+      <div
+        class="product-card"
+        data-name="{{ strtolower($product->productName) }}"
+        data-description="{{ strtolower($product->description ?? '') }}"
+      >
+        <div class="product-name">{{ $product->productName }}</div>
 
-      $platformArray = array_filter(array_map('trim', explode(',', $platforms)));
+        <div class="product-description">
+          {{ $product->description ?? 'No description available.' }}
+        </div>
 
-      // Pretty category label
-      $catLabel = match($category) {
-        'console'   => 'Console',
-        'game'      => 'Game',
-        'accessory' => 'Accessory',
-        'service'   => 'Software Service',
-        default     => ucfirst($category)
-      };
+        <div class="product-bottom">
+          <div class="product-price">
+            £{{ number_format($product->price, 2) }}
+          </div>
+          <div class="product-hint">
+            In stock: {{ $product->stockQuantity }}
+          </div>
+        </div>
 
-      // Lowercase data for search
-      $searchName = strtolower($name);
-      $searchDesc = strtolower($description);
-    ?>
-    <div
-      class="product-card"
-      data-category="<?php echo h($category); ?>"
-      data-name="<?php echo h($searchName); ?>"
-      data-description="<?php echo h($searchDesc); ?>"
-      data-platforms="<?php echo h($platforms); ?>"
-    >
-      <div class="product-category"><?php echo h($catLabel); ?></div>
-      <div class="product-name"><?php echo h($name); ?></div>
-
-      <div class="product-description">
-        <?php echo $description ? h($description) : 'No description available.'; ?>
+        {{-- add to cart (once CartController is ready) --}}
+        {{-- 
+        <form action="{{ route('cart.add', $product->id) }}" method="POST">
+            @csrf
+            <button type="submit">Add to cart</button>
+        </form>
+        --}}
       </div>
-
-      <?php if ($category === 'game' && !empty($platformArray)): ?>
-        <div class="product-extra">
-          Available for:
-          <?php
-            $labels = [];
-            foreach ($platformArray as $p) {
-              $labels[] = match($p) {
-                'ps5'               => 'PS5',
-                'xbox_series_x'     => 'Xbox Series X',
-                'xbox_series_s'     => 'Xbox Series S',
-                'xbox'              => 'Xbox Series X|S',
-                'switch2'           => 'Nintendo Switch 2',
-                default             => ucfirst($p),
-              };
-            }
-            echo h(implode(', ', $labels));
-          ?>
-        </div>
-      <?php elseif ($category === 'accessory' && !empty($platformArray)): ?>
-        <div class="product-extra">
-          For:
-          <?php echo h(implode(', ', $platformArray)); ?>
-        </div>
-      <?php endif; ?>
-
-      <div class="product-bottom">
-        <div class="product-price">£<?php echo number_format($price, 2); ?></div>
-        <div class="product-hint">
-          <?php if ($category === 'game'): ?>
-            Click to choose console
-          <?php else: ?>
-            Click for details
-          <?php endif; ?>
-        </div>
-      </div>
-    </div>
-  <?php endforeach; ?>
+  @empty
+      <p style="padding: 0 8% 40px;">No products available.</p>
+  @endforelse
 </div>
 
 <div class="no-results" id="noResults">
-  No products matched your search/filter.
+  No products matched your search.
 </div>
-
-<div class="modal-overlay" id="modalOverlay">
-  <div class="modal">
-    <div class="modal-header">
-      <h3 id="modalTitle">Choose console</h3>
-      <button class="modal-close" id="modalCloseBtn" aria-label="Close">&times;</button>
-    </div>
-    <div class="modal-body">
-      <p id="modalDescription">Select which console you want this game for:</p>
-      <div class="platform-buttons" id="platformButtons"></div>
-      <div class="selection-output" id="selectionOutput"></div>
-    </div>
-  </div>
-</div>
-
 
 <script>
   const searchInput   = document.getElementById('searchInput');
-  const filterButtons = document.querySelectorAll('.filter-btn');
-  const productGrid   = document.getElementById('productGrid');
   const productCards  = document.querySelectorAll('.product-card');
   const noResults     = document.getElementById('noResults');
-
-  const modalOverlay      = document.getElementById('modalOverlay');
-  const modalCloseBtn     = document.getElementById('modalCloseBtn');
-  const modalTitle        = document.getElementById('modalTitle');
-  const modalDescription  = document.getElementById('modalDescription');
-  const platformButtonsEl = document.getElementById('platformButtons');
-  const selectionOutput   = document.getElementById('selectionOutput');
-
-  let currentCategory = 'all';
 
   function applyFilters() {
     const query = searchInput.value.trim().toLowerCase();
     let visibleCount = 0;
 
     productCards.forEach(card => {
-      const cardCategory = card.dataset.category;
-      const name         = card.dataset.name || '';
-      const description  = card.dataset.description || '';
+      const name        = card.dataset.name || '';
+      const description = card.dataset.description || '';
 
-      const matchesCategory = (currentCategory === 'all' || cardCategory === currentCategory);
-      const matchesSearch   =
+      const matchesSearch =
         !query ||
         name.includes(query) ||
         description.includes(query);
 
-      const visible = matchesCategory && matchesSearch;
+      const visible = matchesSearch;
       card.style.display = visible ? 'flex' : 'none';
       if (visible) visibleCount++;
     });
@@ -556,86 +485,7 @@ footer{
     noResults.style.display = visibleCount === 0 ? 'block' : 'none';
   }
 
-  
-  filterButtons.forEach(btn => {
-    btn.addEventListener('click', () => {
-      filterButtons.forEach(b => b.classList.remove('active'));
-      btn.classList.add('active');
-      currentCategory = btn.dataset.category;
-      applyFilters();
-    });
-  });
-
-  // Search button
   searchInput.addEventListener('input', applyFilters);
-
-  // product button
-  productGrid.addEventListener('click', (e) => {
-    const card = e.target.closest('.product-card');
-    if (!card) return;
-
-    const category = card.dataset.category;
-    const name     = card.querySelector('.product-name')?.textContent || 'Game';
-
-    if (category === 'game') {
-      openGameModal(card, name);
-    } else {
-      alert(`Product: ${name}\nCategory: ${category.toUpperCase()}`);
-    }
-  });
-
-  // Open modal for game
-  function openGameModal(card, name) {
-    const platformsStr = card.dataset.platforms || '';
-    const platforms = platformsStr
-      .split(',')
-      .map(p => p.trim())
-      .filter(Boolean);
-
-    modalTitle.textContent = name;
-    modalDescription.textContent = 'Select which console you want this game for:';
-    platformButtonsEl.innerHTML = '';
-    selectionOutput.textContent = '';
-
-    if (platforms.length === 0) {
-      selectionOutput.textContent = 'No platforms listed for this game.';
-    } else {
-      platforms.forEach(p => {
-        const btn = document.createElement('button');
-        btn.className = 'platform-btn';
-
-        let label;
-        switch (p) {
-          case 'ps5':           label = 'PS5'; break;
-          case 'xbox_series_x': label = 'Xbox Series X'; break;
-          case 'xbox_series_s': label = 'Xbox Series S'; break;
-          case 'xbox':          label = 'Xbox Series X|S'; break;
-          case 'switch2':       label = 'Nintendo Switch 2'; break;
-          default:              label = p.charAt(0).toUpperCase() + p.slice(1);
-        }
-
-        btn.textContent = label;
-        btn.addEventListener('click', () => {
-          selectionOutput.textContent = `You selected "${name}" for ${label}.`;
-        });
-
-        platformButtonsEl.appendChild(btn);
-      });
-    }
-
-    modalOverlay.style.display = 'flex';
-  }
-
-  function closeModal() {
-    modalOverlay.style.display = 'none';
-  }
-
-  modalCloseBtn.addEventListener('click', closeModal);
-  modalOverlay.addEventListener('click', (e) => {
-    if (e.target === modalOverlay) closeModal();
-  });
-
-  // apply fliter
   applyFilters();
 </script>
 

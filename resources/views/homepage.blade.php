@@ -168,7 +168,7 @@ footer{
   </div>
 
   <ul>
-    <li><a href="{{ route('productpage') }}">Product Page</a></li>
+    <li><a href="{{ route('product') }}">Product Page</a></li>
     <li><a href="{{ route('about') }}">About Us</a></li>
     <li><a href="{{ route('contact') }}">Contact Us</a></li>
 

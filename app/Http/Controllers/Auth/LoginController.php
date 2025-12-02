@@ -21,8 +21,9 @@ class LoginController extends Controller
             'password' => 'required'
         ]);
 
-        if (Auth::attempt($credentials)) {
-            return redirect()->intended('/home');
+        if (Auth::attempt($credentials,$remember=true)) {
+            $request -> session()->regenerate();
+            return redirect()->intended('/');
         }
 
         return back()->withErrors(['email' => 'Invalid login details']);
