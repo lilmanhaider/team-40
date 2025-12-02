@@ -1,3 +1,6 @@
+<!DOCTYPE html>
+<html>
+<head>
 <style>
 nav{
   width:100%;
@@ -51,8 +54,7 @@ nav ul li span:hover{
   font-size:1.2rem;
 }
 
-/* styling for th epopup*/
-#account-popup{
+.popup-overlay{
   display:none;
   position:fixed;
   top:0;
@@ -65,35 +67,102 @@ nav ul li span:hover{
   z-index:1000;
 }
 
-#account-popup .popup-box{
+.popup-box{
   background:white;
   padding:30px;
   border-radius:10px;
-  width:300px;
-  text-align:center;
+  width:320px;
+  max-height:80vh;
+  overflow-y:auto;
+  text-align:left;
 }
 
-#account-popup button{
-  width:100%;
-  padding:10px;
-  margin-top:15px;
+/* button*/
+.popup-box button{
+  padding:8px 10px;
+  margin-top:10px;
   border:none;
   background:#0077ff;
   color:white;
   border-radius:6px;
   cursor:pointer;
-  font-size:1rem;
+  font-size:0.95rem;
 }
 
-#account-popup button:hover{
+.popup-box button:hover{
   background:#005fcc;
 }
 
-#close-popup{
+.close-btn{
+  width:100%;
+  background:#ccc !important;
+}
+
+/*layout of the cart*/
+#cart-items{
   margin-top:10px;
-  background:#ccc;
+  border-top:1px solid #eee;
+  padding-top:10px;
+}
+
+.cart-item{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  margin-bottom:10px;
+  padding-bottom:8px;
+  border-bottom:1px solid #f1f1f1;
+  font-size:0.95rem;
+}
+
+.cart-item-info{
+  display:flex;
+  flex-direction:column;
+}
+
+.cart-item-controls{
+  display:flex;
+  align-items:center;
+  gap:5px;
+}
+
+.qty-btn{
+  width:26px;
+  height:26px;
+  border-radius:4px;
+  padding:0;
+}
+
+.qty-display{
+  min-width:20px;
+  text-align:center;
+}
+
+#cart-total{
+  margin-top:10px;
+  font-weight:bold;
+  text-align:right;
+  font-size:0.95rem;
+}
+
+#cart-empty{
+  margin-top:10px;
+  font-style:italic;
+  color:#777;
+}
+
+.product{
+  border:1px solid #eee;
+  padding:10px;
+  margin:15px 8%;
+  border-radius:8px;
+}
+.product button{
+  margin-top:5px;
 }
 </style>
+</head>
+<body>
 
 <nav>
   <div class="logo">  
@@ -104,21 +173,19 @@ nav ul li span:hover{
     <li><a href="ProductPage.html">Product Page</a></li>
     <li><a href="AboutUs.html">About Us</a></li>
 
-    <li>
-      <span id="account-btn">Account</span>
-    </li>
+    <li><span id="account-btn">Account</span></li>
 
     <li>
-      <a href="cart.php">
+      <span id="cart-btn">
         <span class="nav-icon">🛒</span>
         Cart
-      </a>
+      </span>
     </li>
   </ul>
 </nav>
 
-<!-- Account popup so that when clicking account it pops up with something telling you to log in/register if you dont already have an account.-->
-<div id="account-popup">
+<!-- acount Popup -->
+<div id="account-popup" class="popup-overlay">
   <div class="popup-box">
     <h2>Account</h2>
     <p>Please choose an option:</p>
@@ -126,15 +193,136 @@ nav ul li span:hover{
     <button onclick="window.location='login.php'">Log In</button>
     <button onclick="window.location='register.php'">Register</button>
 
-    <button id="close-popup">Close</button>
+    <button id="close-account" class="close-btn">Close</button>
+  </div>
+</div>
+
+<!--cart popup-->
+<div id="cart-popup" class="popup-overlay">
+  <div class="popup-box">
+    <h2>Your Cart</h2>
+
+    <p id="cart-empty">Your cart is empty.</p>
+    <div id="cart-items"></div>
+    <div id="cart-total"></div>
+
+    <button id="close-cart" class="close-btn">Close</button>
   </div>
 </div>
 
 <script>
-document.getElementById("account-btn").onclick = function(){
+//Popups
+document.getElementById("account-btn").onclick = () => {
   document.getElementById("account-popup").style.display = "flex";
-}
-document.getElementById("close-popup").onclick = function(){
+};
+document.getElementById("close-account").onclick = () => {
   document.getElementById("account-popup").style.display = "none";
+};
+
+const cartPopup   = document.getElementById("cart-popup");
+const cartBtn     = document.getElementById("cart-btn");
+const closeCart   = document.getElementById("close-cart");
+const cartItemsEl = document.getElementById("cart-items");
+const cartEmptyEl = document.getElementById("cart-empty");
+const cartTotalEl = document.getElementById("cart-total");
+
+cartBtn.onclick = () => {
+  cartPopup.style.display = "flex";
+  renderCart();
+};
+closeCart.onclick = () => {
+  cartPopup.style.display = "none";
+};
+
+let cart = {};
+
+// add product to cart when pressed
+function addToCart(id, name, price){
+  if (!cart[id]) {
+    cart[id] = {
+      id: id,
+      name: name,
+      price: parseFloat(price),
+      quantity: 0
+    };
+  }
+  cart[id].quantity++;
+  renderCart();
 }
+
+// change number of products (+ / -)
+function changeQuantity(id, delta){
+  if (!cart[id]) return;
+  cart[id].quantity += delta;
+  if (cart[id].quantity <= 0){
+    delete cart[id]; // remove product if quantity goes to 0
+  }
+  renderCart();
+}
+
+function renderCart(){
+  cartItemsEl.innerHTML = "";
+  let ids = Object.keys(cart);
+
+  if (ids.length === 0){
+    cartEmptyEl.style.display = "block";
+    cartTotalEl.textContent = "";
+    return;
+  }
+
+  cartEmptyEl.style.display = "none";
+
+  let total = 0;
+
+  ids.forEach(id => {
+    const item = cart[id];
+    total += item.price * item.quantity;
+
+    const div = document.createElement("div");
+    div.className = "cart-item";
+    div.dataset.id = id;
+
+    div.innerHTML = `
+      <div class="cart-item-info">
+        <span><strong>${item.name}</strong></span>
+        <span>£${item.price.toFixed(2)} each</span>
+      </div>
+      <div class="cart-item-controls">
+        <button class="qty-btn" data-action="decrease">-</button>
+        <span class="qty-display">${item.quantity}</span>
+        <button class="qty-btn" data-action="increase">+</button>
+      </div>
+    `;
+
+    cartItemsEl.appendChild(div);
+  });
+
+  cartTotalEl.textContent = "Total: £" + total.toFixed(2);
+}
+
+// handle add or remove (+/-)
+cartItemsEl.addEventListener("click", function(e){
+  const btn = e.target;
+  if (!btn.classList.contains("qty-btn")) return;
+
+  const action = btn.getAttribute("data-action");
+  const itemDiv = btn.closest(".cart-item");
+  const id = itemDiv.dataset.id;
+
+  if (action === "increase") changeQuantity(id, +1);
+  if (action === "decrease") changeQuantity(id, -1);
+});
+
+// buttons for adding stuff to cart
+document.querySelectorAll(".add-to-cart").forEach(btn => {
+  btn.addEventListener("click", () => {
+    const id    = btn.getAttribute("data-id");
+    const name  = btn.getAttribute("data-name");
+    const price = btn.getAttribute("data-price");
+    addToCart(id, name, price);
+  });
+});
 </script>
+
+</body>
+</html>
