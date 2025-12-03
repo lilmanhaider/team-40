@@ -10,3 +10,13 @@ VALUES
 
 
 //accesories
+INSERT INTO products
+(productName, description, price, stockQuantity, image, category, created_at, updated_at)
+VALUES
+('Lego World Nintendo', 'Creative open-world adventure built entirely from LEGO bricks. Explore, build and unlock unique characters and vehicles. Perfect for all ages and family gaming sessions.', 29.99, 10, 'lego world nintendo .png', 'games', NOW(), NOW()),
+('Mario Kart World Nintendo', 'Fast-paced kart racing with iconic Nintendo characters and exciting tracks. Compete with friends locally or online for endless replay value.', 39.99, 10, 'mario kart world nintendo.png', 'games', NOW(), NOW()),
+('Warzone PS5', 'Action-packed battle royale with next-gen graphics and smoother frame rates on PS5. Squad up, drop in and fight for survival across massive dynamic maps.', 34.99, 10, 'Warzone ps5.png', 'games', NOW(), NOW()),
+('FIFA 26 PS5', 'Next-generation football gameplay with updated teams, new animation systems and enhanced matchday immersion on PS5. Ultimate Team and Career modes included.', 59.99, 10, 'fifa 26 ps5.png', 'games', NOW(), NOW()),
+('FIFA 26 Xbox', 'Football simulation with improved AI, realistic physics and full licensed leagues. Optimized for Xbox performance across online and offline modes.', 59.99, 10, 'fifa 26 xbox.png', 'games', NOW(), NOW()),
+('Sniper Elite 4 Nintendo', 'Stealth sniper experience set in World War II environments. Plan long-range shots, use tactical gadgets and infiltrate enemy strongholds on the go.', 24.99, 10, 'sniper elite 4 nintendo.png', 'games', NOW(), NOW()),
+('Warzone Xbox', 'Free-roam battle royale action with cross-platform multiplayer support on Xbox. Drop in solo or with your squad, complete contracts and survive to win.', 34.99, 10, 'warzone xbox.png', 'games', NOW(), NOW());
