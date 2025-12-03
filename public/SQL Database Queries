@@ -20,3 +20,17 @@ VALUES
 ('FIFA 26 Xbox', 'Football simulation with improved AI, realistic physics and full licensed leagues. Optimized for Xbox performance across online and offline modes.', 59.99, 10, 'fifa 26 xbox.png', 'games', NOW(), NOW()),
 ('Sniper Elite 4 Nintendo', 'Stealth sniper experience set in World War II environments. Plan long-range shots, use tactical gadgets and infiltrate enemy strongholds on the go.', 24.99, 10, 'sniper elite 4 nintendo.png', 'games', NOW(), NOW()),
 ('Warzone Xbox', 'Free-roam battle royale action with cross-platform multiplayer support on Xbox. Drop in solo or with your squad, complete contracts and survive to win.', 34.99, 10, 'warzone xbox.png', 'games', NOW(), NOW());
+
+
+//accessories 
+INSERT INTO products
+(productName, description, price, stockQuantity, image, category, created_at, updated_at)
+VALUES
+('Xbox Controller', 'Official wireless controller designed for Xbox consoles with textured grips and responsive triggers. Ideal for competitive gaming and smooth online play.', 49.99, 10, 'xbox controller.png', 'accessories', NOW(), NOW()),
+('Scuff Controller (PS5)', 'Custom-designed PS5 Scuf style controller with adjustable paddles and improved grip. Built for precision and enhanced control during fast-paced gameplay.', 139.99, 10, 'scuff controler.png', 'accessories', NOW(), NOW()),
+('PS5 Controller', 'DualSense wireless controller for PlayStation 5 featuring adaptive triggers and haptic feedback. Comfortable, durable and perfect for long gaming sessions.', 59.99, 10, 'ps5 controller.png', 'accessories', NOW(), NOW()),
+('Nintendo Controller', 'Nintendo wireless controller suitable for multiple Switch titles. Lightweight, ergonomic and ideal for local multiplayer and portable gaming.', 29.99, 10, 'nintendo controller.png', 'accessories', NOW(), NOW()),
+('Gaming Headset (Binnune)', 'High-performance Binnune gaming headset with noise-cancelling mic and comfortable over-ear padding. Compatible with PlayStation, Xbox, PC and Nintendo Switch.', 34.99, 10, 'gaming headset for both.png', 'accessories', NOW(), NOW());
+
+
+//
