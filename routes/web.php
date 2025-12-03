@@ -7,7 +7,7 @@ use App\Http\Controllers\Auth\PasswordController;
 use App\Http\Controllers\ProductController;
 
 
-Route::view('/', 'home')->name('home');
+Route::view('/', 'homepage')->name('homepage');
 
 Route::get('/product', [ProductController::class, 'index'])->name('product');
 
