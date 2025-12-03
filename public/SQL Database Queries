@@ -1,0 +1,12 @@
+//consoles 
+INSERT INTO products
+(productName, description, price, stockQuantity, image, category, created_at, updated_at)
+VALUES
+('PS5 Disc 800GB', 'Sony PlayStation 5 console with Ultra HD Blu-ray drive and 825GB internal storage. Delivers fast loading, smooth frame rates and stunning 4K HDR performance for next-gen gaming experiences.', 449.99, 10, 'ps5.png', 'consoles', NOW(), NOW()),
+('PS5 Digital 800GB', 'PlayStation 5 Digital Edition featuring 825GB SSD storage and lightning fast load times. Ideal for players who prefer digital game libraries and immersive next-gen performance.', 389.99, 10, 'ps5 digital.png', 'consoles', NOW(), NOW()),
+('Xbox Series X 1TB', 'Microsoft Xbox Series X with 1TB SSD, offering true 4K gaming, quick resume and ultra-fast processing. Designed for premium performance across blockbuster titles and Game Pass exclusives.', 429.99, 10, 'xbox.png', 'consoles', NOW(), NOW()),
+('Xbox Series S 1TB', 'Compact Xbox Series S with 1TB SSD storage, perfect for digital downloads and Game Pass access. Sleek, quiet and built for smooth next-gen gameplay at great value.', 299.99, 10, 'xbox series s.png', 'consoles', NOW(), NOW()),
+('Nintendo Switch Console', 'Nintendo Switch hybrid system allowing handheld and docked TV play. Enjoy family games, exclusives and portable entertainment anytime, anywhere.', 249.99, 10, 'nintendo switch.png', 'consoles', NOW(), NOW());
+
+
+//accesories
