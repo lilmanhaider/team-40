@@ -23,9 +23,16 @@ Route::post('/cart/update/{id}', [CartController::class, 'update'])->name('cart.
 Route::post('/cart/remove/{id}', [CartController::class, 'remove'])->name('cart.remove');
 Route::get('/checkout', function () {
     $cart = session()->get('cart', []);
+    if (empty($cart)) {
+        return redirect()->route('cart')->with('error', 'Your cart is empty.');
+    }
+
     session()->forget('cart');
+
     return view('checkout', ['cart' => $cart]);
-})->middleware('auth')->name('checkout');
+})
+->middleware('auth')
+->name('checkout');
 
 
 Route::get('/register', [RegisterController::class, 'showRegistrationForm'])->name('register');

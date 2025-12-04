@@ -124,6 +124,11 @@
         </form>
 
     </div>
+    <p style="text-align:center">
+        <a href="{{ route('login') }}">
+            Have an account? Login here:
+        </a>
+    </p>
 
 </body>
 </html>
