@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!DOCTYPE html> 
 <html lang="en">
 <head>
 <meta charset="UTF-8" />
@@ -49,9 +49,6 @@ nav ul li a{
 }
 nav ul li a:hover{
   color:#0077ff;
-}
-.nav-icon{
-  font-size:1.05rem;
 }
 .hero{
   width:100%;
@@ -178,6 +175,7 @@ nav ul li a:hover{
     <button class="filter-btn" data-category="games">Games</button>
     <button class="filter-btn" data-category="accessories">Accessories</button>
     <button class="filter-btn" data-category="software services">Software Services</button>
+    <button class="filter-btn" data-category="Gaming Monitors">Gaming Monitors</button>
   </div>
 
   <div class="search-wrapper">
@@ -193,6 +191,7 @@ nav ul li a:hover{
         data-description="{{ strtolower($product->description ?? '') }}"
         data-category="{{ strtolower($product->category ?? '') }}"
       >
+
         @if($product->image)
           <img 
               src="{{ asset('images/products/' . $product->image) }}" 
@@ -209,26 +208,28 @@ nav ul li a:hover{
         <div class="product-description">{{ $product->description ?? 'No description available.' }}</div>
 
         <div class="product-bottom" style="display:flex; justify-content:space-between; align-items:center; margin-top:10px;">
-  <div>
-    <div class="product-price">£{{ number_format($product->price, 2) }}</div>
-    <div class="product-hint">In stock: {{ $product->stockQuantity }}</div>
-  </div>
+          <div>
+            <div class="product-price">£{{ number_format($product->price, 2) }}</div>
+            <div class="product-hint">In stock: {{ $product->stockQuantity }}</div>
+          </div>
 
-  <form action="{{ route('cart.add', $product->id) }}" method="POST">
-      @csrf
-      <button type="submit" style="
-        padding:6px 12px;
-        border:none;
-        border-radius:999px;
-        background:#0077ff;
-        color:#fff;
-        cursor:pointer;
-        font-size:0.85rem;
-      ">
-        Add to cart
-      </button>
-  </form>
-</div>
+          <form action="{{ route('cart.add', $product->id) }}" method="POST">
+              @csrf
+              <button type="submit" style="
+                padding:6px 12px;
+                border:none;
+                border-radius:999px;
+                background:#0077ff;
+                color:#fff;
+                cursor:pointer;
+                font-size:0.85rem;
+              ">
+                Add to cart
+              </button>
+          </form>
+        </div>
+      </div>
+
   @empty
       <p>No products available.</p>
   @endforelse
