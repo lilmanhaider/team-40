@@ -165,14 +165,7 @@ nav ul li a:hover{
     <img src="images/index/Logo.jpg" alt="Tech4ForU Logo">
   </div>
 
-  <ul>
-    <li><a href="{{ route('homepage') }}">Home</a></li>
-    <li><a href="{{ route('product') }}">Product Page</a></li>
-    <li><a href="{{ route('about') }}">About Us</a></li>
-    <li><a href="{{ route('contact') }}">Contact Us</a></li>
-    <li><a href="{{ route('login') }}">Login</a></li>
-    <li><a href="{{ route('cart') }}">Cart</a></li>
-  </ul>
+  @include('.nav')
 </nav>
 
 <section class="hero">
