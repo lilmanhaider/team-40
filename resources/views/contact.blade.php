@@ -4,14 +4,18 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Contact - Tech4FourU</title>
-    <style>
+
+<style>
 *{
   margin:0;
   padding:0;
   box-sizing:border-box;
   font-family:"Poppins",sans-serif;
 }
-
+h1{text-align: center;
+}
+p{text-align: center;
+}
 body{
   background:#f5f6fa;
 }
@@ -62,10 +66,6 @@ nav ul li a:hover{
   color:#0077ff;
 }
 
-.nav-icon{
-  font-size:1.05rem;
-}
-
 .hero{
   width:100%;
   padding:110px 8%;
@@ -76,7 +76,6 @@ nav ul li a:hover{
   gap:15px;
   min-height:350px;
 }
-
 
 .hero h1{
   font-size:2.9rem;
@@ -105,7 +104,6 @@ nav ul li a:hover{
   background:#45cc7f;
 }
 
-/* CARDS */
 .section-title{
   text-align:center;
   font-size:1.9rem;
@@ -144,7 +142,6 @@ nav ul li a:hover{
   line-height:1.5;
 }
 
-/* FOOTER */
 footer{
   width:100%;
   text-align:center;
@@ -155,8 +152,62 @@ footer{
   font-size:.95rem;
 }
 
-</style>
+.contact-info {
+    background: #f5f5f5;
+    padding: 15px;
+    border-radius: 5px;
+    margin: 20px 0;
+}
 
+.form-group {
+    margin-bottom: 15px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+.form-group input, .form-group textarea {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 14px;
+}
+
+.submit-btn {
+    background: #007bff;
+    color: white;
+    padding: 12px 24px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+.submit-btn:hover {
+    background: #0056b3;
+}
+
+.error-message {
+    color: #dc3545;
+    font-size: 14px;
+    margin-top: 5px;
+}
+
+.success-message {
+    background: #d4edda;
+    color: #155724;
+    border: 1px solid #c3e6cb;
+    padding: 12px 16px;
+    border-radius: 4px;
+    margin: 15px 0;
+    font-size: 14px;
+    display: none;
+}
+</style>
 
 </head>
 <body>
@@ -174,226 +225,137 @@ footer{
     <li><a href="{{ route('login') }}">Login</a></li>
     <li><a href="{{ route('cart') }}">Cart</a></li>
   </ul>
-    
-
-   
 </nav>
-    <style>
-        .contact-info {
-            background: #f5f5f5;
-            padding: 15px;
-            border-radius: 5px;
-            margin: 20px 0;
-        }
-        .form-group {
-            margin-bottom: 15px;
-        }
-        .form-group label {
-            display: block;
-            margin-bottom: 5px;
-            font-weight: bold;
-        }
-        .form-group input, .form-group select, .form-group textarea {
-            width: 100%;
-            padding: 8px;
-            border: 1px solid #ccc;
-            border-radius: 4px;
-            font-size: 14px;
-        }
-        .submit-btn {
-            background: #007bff;
-            color: white;
-            padding: 12px 24px;
-            border: none;
-            border-radius: 4px;
-            cursor: pointer;
-            font-size: 16px;
-        }
-        .submit-btn:hover {
-            background: #0056b3;
-        }
-        .error-message {
-            color: #dc3545;
-            font-size: 14px;
-            margin-top: 5px;
-        }
-    </style>
-</head>
 
 <body class="contact">
 
-    <header class="main-header">
-        <h1>Tech4FourU – Contact Us</h1>
-    </header>
 
-    <main>
-        <section class="contact">
-            <h1>Get In Touch With Us</h1>
+<main>
+<section class="contact">
+    <h1>Get In Touch With Us</h1>
 
-            <div class="contact-info">
-                <h3>Our Contact Details</h3>
-                <p><strong>Company:</strong> Tech4FourU</p>
-                <p><strong>Email:</strong> Tech4FourU@gmail.com</p>
-                <p><strong>Phone:</strong> 07123 456789</p>
-                <p><strong>Address:</strong> TBD</p>
-            </div>
+    <div class="contact-info">
+        <h3>Our Contact Details:</h3>
+        <p><strong>Company:</strong> Tech4FourU</p>
+        <p><strong>Email:</strong> Tech4FourU@gmail.com</p>
+        <p><strong>Phone:</strong> 07123 456789</p>
+        <p><strong>Address:</strong> Aston40, birmingham, B6 7AU</p>
+    </div>
 
-            <p>Got questions? Need support? Want to collaborate? Drop us a message below.</p>
+    <p>Got questions? Need support? Want to collaborate? Drop us a message below.</p>
+    <li></li>
+    <div id="successMessage" class="success-message"></div>
 
-            <form id="contactForm" onsubmit="return handleFormSubmit(event)">
+    <form id="contactForm" onsubmit="return handleFormSubmit(event)">
+        <div class="form-group">
+            <label for="fullName">Your Full Name:</label>
+            <input type="text" id="fullName" name="fullName" required>
+            <div id="nameError" class="error-message" style="display:none;"></div>
+        </div>
 
-                <div class="form-group">
-                    <label for="fullName">Your Full Name:</label>
-                    <input type="text" id="fullName" name="fullName" required>
-                    <div id="nameError" class="error-message" style="display:none;"></div>
-                </div>
+        <div class="form-group">
+            <label for="email">Your Email:</label>
+            <input type="email" id="email" name="email" required>
+            <div id="emailError" class="error-message" style="display:none;"></div>
+        </div>
 
-                <div class="form-group">
-                    <label for="email">Your Email:</label>
-                    <input type="email" id="email" name="email" required placeholder="example@email.com">
-                    <div id="emailError" class="error-message" style="display:none;"></div>
-                </div>
+        <div class="form-group">
+            <label for="confirmEmail">Confirm Email Address:</label>
+            <input type="email" id="confirmEmail" name="confirmEmail" required>
+            <div id="confirmEmailError" class="error-message" style="display:none;"></div>
+        </div>
 
-                <div class="form-group">
-                    <label for="confirmEmail">Confirm Email Address:</label>
-                    <input type="email" id="confirmEmail" name="confirmEmail" required placeholder="Re-enter your email">
-                    <div id="confirmEmailError" class="error-message" style="display:none;"></div>
-                </div>
+        <div class="form-group">
+            <label for="userMessage">Your Message:</label>
+            <textarea id="userMessage" name="userMessage" rows="6" required></textarea>
+            <div id="messageError" class="error-message" style="display:none;"></div>
+        </div>
 
-                <div class="form-group">
-                    <label for="userMessage">Your Message:</label>
-                    <textarea id="userMessage" name="userMessage" rows="6" required placeholder="Your message here..."></textarea>
-                    <div id="messageError" class="error-message" style="display:none;"></div>
-                </div>
+        <button type="submit" class="submit-btn">Send Message</button>
+    </form>
+</section>
+</main>
 
-                <button type="submit" class="submit-btn">Send Message</button>
-            </form>
-        </section>
-    </main>
+<footer></footer>
 
-    <footer></footer>
+<script>
+function validateEmailField(emailValue) {
+    const emailError = document.getElementById("emailError");
+    const pattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
-    <script>
-        const tomorrow = new Date();
-        tomorrow.setDate(tomorrow.getDate() + 1);
-        const minDate = tomorrow.toISOString().split("T")[0];
-        document.getElementById("appointmentDate").setAttribute("min", minDate);
+    if (!pattern.test(emailValue)) {
+        emailError.textContent = "Please enter a valid email address.";
+        emailError.style.display = "block";
+        return false;
+    } else {
+        emailError.style.display = "none";
+        return true;
+    }
+}
 
-        const contactMethodSelect = document.getElementById("contactMethod");
-        const phoneGroup = document.getElementById("phoneGroup");
-        const phoneInput = document.getElementById("phoneNumber");
+function checkEmailMatch() {
+    const email = document.getElementById("email").value;
+    const confirmEmail = document.getElementById("confirmEmail").value;
+    const confirmError = document.getElementById("confirmEmailError");
 
-        contactMethodSelect.addEventListener("change", function () {
-            if (this.value === "phone") {
-                phoneGroup.style.display = "block";
-                phoneInput.required = true;
-            } else {
-                phoneGroup.style.display = "none";
-                phoneInput.required = false;
-                phoneInput.value = "";
-            }
-        });
+    if (email !== confirmEmail) {
+        confirmError.textContent = "Emails do not match.";
+        confirmError.style.display = "block";
+        return false;
+    } else {
+        confirmError.style.display = "none";
+        return true;
+    }
+}
 
-        document.getElementById("email").addEventListener("blur", function () {
-            validateEmailField(this.value);
-        });
+document.getElementById("email").addEventListener("blur", function () {
+    validateEmailField(this.value);
+});
 
-        document.getElementById("confirmEmail").addEventListener("blur", function () {
-            checkEmailMatch();
-        });
+document.getElementById("confirmEmail").addEventListener("blur", function () {
+    checkEmailMatch();
+});
 
-        function validateEmailField(emailValue) {
-            const emailError = document.getElementById("emailError");
-            const pattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+function handleFormSubmit(event) {
+    event.preventDefault();
 
-            if (!pattern.test(emailValue)) {
-                emailError.textContent = "Please enter a valid email address.";
-                emailError.style.display = "block";
-                return false;
-            } else {
-                emailError.style.display = "none";
-                return true;
-            }
-        }
+    const errors = document.querySelectorAll(".error-message");
+    errors.forEach(e => e.style.display = "none");
 
-        function checkEmailMatch() {
-            const email = document.getElementById("email").value;
-            const confirmEmail = document.getElementById("confirmEmail").value;
-            const confirmError = document.getElementById("confirmEmailError");
+    const successBox = document.getElementById("successMessage");
+    successBox.style.display = "none";
+    successBox.textContent = "";
 
-            if (email !== confirmEmail) {
-                confirmError.textContent = "Emails do not match.";
-                confirmError.style.display = "block";
-                return false;
-            } else {
-                confirmError.style.display = "none";
-                return true;
-            }
-        }
+    let valid = true;
 
-        function handleFormSubmit(event) {
-            event.preventDefault();
+    const name = document.getElementById("fullName").value.trim();
+    if (name.length < 2) {
+        document.getElementById("nameError").textContent = "Please enter your full name.";
+        document.getElementById("nameError").style.display = "block";
+        valid = false;
+    }
 
-            const errorDivs = document.querySelectorAll(".error-message");
-            errorDivs.forEach(div => div.style.display = "none");
+    if (!validateEmailField(document.getElementById("email").value)) valid = false;
 
-            let isValid = true;
-            let firstError = null;
+    if (!checkEmailMatch()) valid = false;
 
-            const name = document.getElementById("fullName").value.trim();
-            if (name.length < 2) {
-                const err = document.getElementById("nameError");
-                err.textContent = "Please enter your full name.";
-                err.style.display = "block";
-                isValid = false;
-                firstError = firstError || document.getElementById("fullName");
-            }
+    const message = document.getElementById("userMessage").value.trim();
+    if (message.length < 10) {
+        document.getElementById("messageError").textContent = "Please provide a message of at least 10 characters.";
+        document.getElementById("messageError").style.display = "block";
+        valid = false;
+    }
 
-            const email = document.getElementById("email").value;
-            if (!validateEmailField(email)) {
-                isValid = false;
-                firstError = firstError || document.getElementById("email");
-            }
+    if (!valid) return false;
 
-            if (!checkEmailMatch()) {
-                isValid = false;
-                firstError = firstError || document.getElementById("confirmEmail");
-            }
+    successBox.textContent = "Your message has been sent.";
+    successBox.style.display = "block";
 
-            const contactMethod = document.getElementById("contactMethod").value;
-            const phone = document.getElementById("phoneNumber").value;
+    document.getElementById("contactForm").reset();
 
-            if (contactMethod === "phone") {
-                const phonePattern = /^(\+44|0)7\d{9}$/;
-                if (!phonePattern.test(phone)) {
-                    const err = document.getElementById("phoneError");
-                    err.textContent = "Please enter a valid UK mobile number.";
-                    err.style.display = "block";
-                    isValid = false;
-                    firstError = firstError || document.getElementById("phoneNumber");
-                }
-            }
-
-            const message = document.getElementById("userMessage").value.trim();
-            if (message.length < 10) {
-                const err = document.getElementById("messageError");
-                err.textContent = "Please provide a message of at least 10 characters.";
-                err.style.display = "block";
-                isValid = false;
-                firstError = firstError || document.getElementById("userMessage");
-            }
-
-            if (!isValid) {
-                if (firstError) firstError.focus();
-                return false;
-            }
-
-            alert("Your message has been sent.");
-            document.getElementById("contactForm").reset();
-            phoneGroup.style.display = "none";
-            return false;
-        }
-    </script>
+    return false;
+}
+</script>
 
 </body>
 </html>

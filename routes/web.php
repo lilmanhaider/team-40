@@ -48,8 +48,7 @@ Route::middleware('auth')->group(function () {
     Route::post('/password/change', [PasswordController::class, 'update'])->name('password.update');
 });
 
-Route::get('/test', function () {
-    return "You are logged in!";
-})->middleware('auth')->name('/test');
+Route::get('/homepage', function () {
+})->middleware('auth')->name('/homepage');
 
 

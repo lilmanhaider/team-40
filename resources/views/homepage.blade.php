@@ -16,6 +16,9 @@
 body{
   background:#f5f6fa;
 }
+h2{
+text-align:center;
+}
 
 nav{
   width:100%;
@@ -107,7 +110,7 @@ nav ul li a:hover{
 }
 .hero .shop-btn {
   display:inline-block;
-  padding:15px 250px;
+  padding:15px 150px;
   background:#50ce29;
   color:white;
   border-radius:8px;
@@ -119,7 +122,7 @@ nav ul li a:hover{
 
 .hero .shop-btn:hover {
   background:#45cc7f;
-  transform:translateY(-3px);
+  transform:translateY(-5px);
   box-shadow:0 8px 20px rgba(0,0,0,0.15);
 }
 
@@ -176,8 +179,23 @@ footer{
 
 </head>
 <body>
+<nav>
+  <div class="logo">
+    <img src="images/index/Logo.jpg" alt="Tech4ForU Logo">
+  </div>
 
-@include('nav')
+  <ul>
+    <li><a href="{{ route('homepage') }}">Home</a></li>
+    <li><a href="{{ route('product') }}">Product Page</a></li>
+    <li><a href="{{ route('about') }}">About Us</a></li>
+    <li><a href="{{ route('contact') }}">Contact Us</a></li>
+    <li><a href="{{ route('login') }}">Login</a></li>
+    <li><a href="{{ route('cart') }}">Cart</a></li>
+  </ul>
+    
+
+   
+</nav>
 
 
    
@@ -186,15 +204,14 @@ footer{
 
 <section class="hero">
     <div>
-  <h1>The best place to buy Gaming Tech & more!</h1>
+  <h1>The Best Place to Buy Gaming Tech & More!</h1>
   <p>Powering Your Gaming Experience, One Upgrade at a Time...</p>
-<a href="{{ route('product') }}" class="shop-btn">Shop Us</a>
+<a href="{{ route('product') }}" class="shop-btn">We price match any website!</a>
 
   </div>
 </section>
 
-
-
+<li></li>
 <h2 class="section-title">Our Services</h2>
 
 <div class="card-container">

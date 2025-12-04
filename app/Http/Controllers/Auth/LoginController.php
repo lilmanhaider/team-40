@@ -23,7 +23,7 @@ class LoginController extends Controller
 
         if (Auth::attempt($credentials,$remember=true)) {
             $request -> session()->regenerate();
-            return redirect()->intended('/test');
+            return redirect()->intended(route('homepage'));
         }
 
         return back()->withErrors(['email' => 'Invalid login details']);
