@@ -141,6 +141,14 @@ nav ul li a:hover{
   color:#777;
   display:none;
 }
+.product-card {
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.product-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 6px 18px rgba(0,0,0,0.15);
+}
 </style>
 
 </head>
@@ -175,7 +183,7 @@ nav ul li a:hover{
     <button class="filter-btn" data-category="games">Games</button>
     <button class="filter-btn" data-category="accessories">Accessories</button>
     <button class="filter-btn" data-category="software services">Software Services</button>
-    <button class="filter-btn" data-category="Gaming Monitors">Gaming Monitors</button>
+    <button class="filter-btn" data-category="gaming monitors">Gaming Monitors</button>
   </div>
 
   <div class="search-wrapper">
