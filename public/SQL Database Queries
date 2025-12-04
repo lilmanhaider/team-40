@@ -9,7 +9,7 @@ VALUES
 ('Nintendo Switch Console', 'Nintendo Switch hybrid system allowing handheld and docked TV play. Enjoy family games, exclusives and portable entertainment anytime, anywhere.', 249.99, 10, 'nintendo switch.png', 'consoles', NOW(), NOW());
 
 
-//accesories
+//games
 INSERT INTO products
 (productName, description, price, stockQuantity, image, category, created_at, updated_at)
 VALUES
@@ -33,4 +33,4 @@ VALUES
 ('Gaming Headset (Binnune)', 'High-performance Binnune gaming headset with noise-cancelling mic and comfortable over-ear padding. Compatible with PlayStation, Xbox, PC and Nintendo Switch.', 34.99, 10, 'gaming headset for both.png', 'accessories', NOW(), NOW());
 
 
-//
+//software
