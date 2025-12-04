@@ -173,8 +173,12 @@ footer{
 <section class="hero">
     <div>
   <h1>The best place to buy Gaming Tech & more!</h1>
-  <p>Powering Your Gaming Experience, One Upgrade at a Time..</p>
-  <button>Shop Us</button>
+  <p>Powering Your Gaming Experience, One Upgrade at a Time...</p>
+  <a href="{{ route('product') }}" 
+   style="display:inline-block; padding:12px 24px; background:#0077ff; color:white; 
+          border-radius:8px; text-decoration:none; font-size:1.1rem; margin-top:15px;">
+    Shop Us
+</a>
   </div>
 </section>
 
