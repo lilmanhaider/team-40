@@ -159,7 +159,7 @@ nav ul li a:hover{
     <li><a href="{{ route('product') }}">Product Page</a></li>
     <li><a href="{{ route('about') }}">About Us</a></li>
     <li><a href="{{ route('contact') }}">Contact Us</a></li>
-    <li><a href="{{ route('account') }}">Account</a></li>
+    <li><a href="{{ route('login') }}">Login</a></li>
     <li><a href="{{ route('cart') }}">Cart</a></li>
   </ul>
 </nav>
@@ -208,11 +208,27 @@ nav ul li a:hover{
         <div class="product-name">{{ $product->productName }}</div>
         <div class="product-description">{{ $product->description ?? 'No description available.' }}</div>
 
-        <div class="product-bottom">
-          <div class="product-price">£{{ number_format($product->price, 2) }}</div>
-          <div class="product-hint">In stock: {{ $product->stockQuantity }}</div>
-        </div>
-      </div>
+        <div class="product-bottom" style="display:flex; justify-content:space-between; align-items:center; margin-top:10px;">
+  <div>
+    <div class="product-price">£{{ number_format($product->price, 2) }}</div>
+    <div class="product-hint">In stock: {{ $product->stockQuantity }}</div>
+  </div>
+
+  <form action="{{ route('cart.add', $product->id) }}" method="POST">
+      @csrf
+      <button type="submit" style="
+        padding:6px 12px;
+        border:none;
+        border-radius:999px;
+        background:#0077ff;
+        color:#fff;
+        cursor:pointer;
+        font-size:0.85rem;
+      ">
+        Add to cart
+      </button>
+  </form>
+</div>
   @empty
       <p>No products available.</p>
   @endforelse

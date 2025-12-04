@@ -67,6 +67,7 @@ body {
     text-align: center;
     font-size: 0.9rem;
 }
+
 </style>
 </head>
 
@@ -93,8 +94,12 @@ body {
 
         <input type="submit" value="Log In" />
     </form>
+     <p style="text-align:center">
+        <a href="{{ route('register') }}">
+            Dont have an account? Register here:
+        </a>
+    </p>
 
 </div>
-
-</body>
+    
 </html>

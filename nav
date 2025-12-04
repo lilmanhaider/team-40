@@ -177,11 +177,6 @@ nav ul li span:hover{
     <li><a href="{{ route('login') }}">Login</a></li>
     <li><a href="{{ route('cart') }}">Cart</a></li>
 
-    <li>
-      <span id="cart-btn">
-        Cart
-      </span>
-    </li>
   </ul>
 </nav>
 
