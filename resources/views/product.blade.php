@@ -12,7 +12,13 @@
   box-sizing:border-box;
   font-family:"Poppins",sans-serif;
 }
-body{
+h1{text-align: center;
+}
+p{
+  text-align: center;
+}
+
+  body{
   background:#f5f6fa;
 }
 nav{
@@ -89,12 +95,12 @@ nav ul li a:hover{
   transition:0.2s;
 }
 .filter-btn:hover{
-  border-color:#0077ff;
+  border-color:#4aa230;
 }
 .filter-btn.active{
-  background:#0077ff;
+  background:#418f2a;
   color:#fff;
-  border-color:#0077ff;
+  border-color:#4aa230;
 }
 .search-wrapper{
   flex:1 1 260px;
@@ -174,7 +180,7 @@ nav ul li a:hover{
   <p>Find what you need - Faster</p>
 </section>
 
-<h2 class="section-title">All Products</h2>
+<h2 class="section-title">Our Products</h2>
 
 <div class="product-toolbar">
   <div class="category-filters">
@@ -227,7 +233,7 @@ nav ul li a:hover{
                 padding:6px 12px;
                 border:none;
                 border-radius:999px;
-                background:#0077ff;
+                background:#50ce29;
                 color:#fff;
                 cursor:pointer;
                 font-size:0.85rem;

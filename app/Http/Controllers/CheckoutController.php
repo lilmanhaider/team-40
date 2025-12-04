@@ -12,4 +12,5 @@ class CheckoutController extends Controller
 
         return view('checkout', ['cart' => $cart]);
     }
+    
 }

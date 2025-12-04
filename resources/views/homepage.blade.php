@@ -105,8 +105,24 @@ nav ul li a:hover{
 .hero button:hover{
   background:#45cc7f;
 }
+.hero .shop-btn {
+  display:inline-block;
+  padding:15px 250px;
+  background:#50ce29;
+  color:white;
+  border-radius:8px;
+  text-decoration:none;
+  font-size:1.1rem;
+  margin-top:45px;
+  transition:0.3s ease;
+}
 
-/* CARDS */
+.hero .shop-btn:hover {
+  background:#45cc7f;
+  transform:translateY(-3px);
+  box-shadow:0 8px 20px rgba(0,0,0,0.15);
+}
+
 .section-title{
   text-align:center;
   font-size:1.9rem;
@@ -145,7 +161,6 @@ nav ul li a:hover{
   line-height:1.5;
 }
 
-/* FOOTER */
 footer{
   width:100%;
   text-align:center;
@@ -169,16 +184,12 @@ footer{
 
 
 
-<!-- HERO -->
 <section class="hero">
     <div>
   <h1>The best place to buy Gaming Tech & more!</h1>
   <p>Powering Your Gaming Experience, One Upgrade at a Time...</p>
-  <a href="{{ route('product') }}" 
-   style="display:inline-block; padding:12px 24px; background:#0077ff; color:white; 
-          border-radius:8px; text-decoration:none; font-size:1.1rem; margin-top:15px;">
-    Shop Us
-</a>
+<a href="{{ route('product') }}" class="shop-btn">Shop Us</a>
+
   </div>
 </section>
 
@@ -206,7 +217,6 @@ footer{
 </div>
 
 
-<!-- FOOTER -->
 <footer>
   © 2025 MyWebsite — All rights reserved.
 </footer>

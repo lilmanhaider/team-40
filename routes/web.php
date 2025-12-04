@@ -33,6 +33,8 @@ Route::get('/checkout', function () {
 })
 ->middleware('auth')
 ->name('checkout');
+Route::post('/checkout/apply-promo', [CartController::class, 'applyPromo'])->name('checkout.applyPromo');
+
 
 
 Route::get('/register', [RegisterController::class, 'showRegistrationForm'])->name('register');
