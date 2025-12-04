@@ -44,4 +44,18 @@ VALUES
 ('EA Play', 'Monthly subscription offering access to a growing library of EA games, trial versions and exclusive in-game rewards. Perfect for FIFA, Battlefield and Need for Speed fans.', 5.99, 10, 'ea play.png', 'software services', NOW(), NOW()),
 ('Steam Card', 'Digital Steam wallet top-up usable on thousands of PC games and downloadable content. Fast and secure way to purchase titles, DLC and in-game items.', 20.00, 10, 'steam card.png', 'software services', NOW(), NOW());
 
+// Gaming Monitors
+INSERT INTO products
+(productName, description, price, stockQuantity, image, category, created_at, updated_at)
+VALUES
+('LG Monitor 27” 2560 x 1440', '27-inch LG gaming monitor with QHD resolution for crisp visuals and smooth gameplay. Ideal for FPS, RPG, and competitive online matches.', 229.99, 10, 'Lg monitor.png', 'Gaming Monitors', NOW(), NOW()),
+
+('Acer Monitor 27”', '27-inch Acer gaming monitor with fast response times and vivid colours. Perfect for immersive gaming setups and daily use.', 189.99, 10, 'acer monitor.png', 'Gaming Monitors', NOW(), NOW()),
+
+('NOC Monitor 27”', '27-inch NOC LED gaming monitor built for everyday gaming performance. Reliable display quality for consoles and PC gaming.', 159.99, 10, 'noc monitor.png', 'Gaming Monitors', NOW(), NOW()),
+
+('Samsung Monitor 27”', '27-inch Samsung display with sharp visuals and smooth refresh rate. Great for competitive gaming and streaming.', 249.99, 10, 'sam monitor.png', 'Gaming Monitors', NOW(), NOW()),
+
+('HP Monitor 27”', '27-inch HP monitor designed for clear visuals and low input lag. Suitable for home gaming, work, and media consumption.', 179.99, 10, 'hp monitor.png', 'Gaming Monitors', NOW(), NOW());
+
 
