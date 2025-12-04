@@ -34,3 +34,14 @@ VALUES
 
 
 //software
+INSERT INTO products
+(productName, description, price, stockQuantity, image, category, created_at, updated_at)
+VALUES
+('Xbox Gift Card', 'Digital Xbox gift card for purchasing games, add-ons and subscriptions on the Microsoft Store. Ideal for gifting or topping up your account balance.', 25.00, 10, 'xbox gift card.png', 'software services', NOW(), NOW()),
+('PlayStation Plus', 'Subscription service for PS4 and PS5 including online multiplayer, cloud saves and monthly game downloads. Access exclusive members-only features and discounts.', 49.99, 10, 'playstation plus.png', 'software services', NOW(), NOW()),
+('Nintendo eShop Card', 'Nintendo eShop top-up card for purchasing digital games and content on the Switch. Quick, secure and perfect for players who buy titles digitally.', 20.00, 10, 'nintendo.png', 'software services', NOW(), NOW()),
+('Xbox Game Pass', 'Monthly subscription service granting access to hundreds of Xbox titles, day-one releases and cloud gaming. Best value option for regular Xbox players.', 10.99, 10, 'game pass.png', 'software services', NOW(), NOW());
+('EA Play', 'Monthly subscription offering access to a growing library of EA games, trial versions and exclusive in-game rewards. Perfect for FIFA, Battlefield and Need for Speed fans.', 5.99, 10, 'ea play.png', 'software services', NOW(), NOW());
+('Steam Card', 'Digital Steam wallet top-up usable on thousands of PC games and downloadable content. Fast and secure way to purchase titles, DLC and in-game items.', 20.00, 10, 'steam card.png', 'software services', NOW(), NOW());
+
+
