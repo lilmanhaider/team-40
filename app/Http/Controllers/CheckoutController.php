@@ -26,12 +26,12 @@ class CheckoutController extends Controller
             $product = Product::find($id);
 
             if (!$product) {
-                return redirect()->route('cart')->with('error', 'A product in your cart no longer exists.');
+                return redirect()->route('cart')->with('error', 'Product no longer exists.');
             }
 
             if ($product->stockQuantity < $item['quantity']) {
                 return redirect()->route('cart')
-                    ->with('error', 'Not enough stock available for ' . $product->productName . '.');
+                    ->with('error', 'Not enough stock for ' . $product->productName);
             }
         }
 
@@ -44,6 +44,6 @@ class CheckoutController extends Controller
 
         $request->session()->forget('cart');
 
-        return redirect()->route('product')->with('success', 'Order completed successfully!');
+        return redirect()->route('product')->with('success', 'Order completed!');
     }
 }

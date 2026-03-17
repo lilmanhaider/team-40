@@ -230,9 +230,12 @@
                 <a href="{{ route('cart') }}">← Back to cart</a>
             </div>
 
-            <a href="{{ route('homepage') }}" class="btn-finish">
-                Finish
-            </a>
+           <form action="{{ route('checkout.finish') }}" method="POST">
+    @csrf
+    <button type="submit" class="btn-finish">
+        Finish
+    </button>
+</form>
         </div>
 
     @endif
