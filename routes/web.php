@@ -6,7 +6,7 @@ use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Auth\PasswordController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\CartController;
-
+use App\Http\Controllers\CheckoutController;
 
 Route::view('/', 'homepage')->name('homepage');
 
@@ -16,24 +16,25 @@ Route::view('/about', 'about')->name('about');
 Route::view('/contact', 'contact')->name('contact');
 Route::view('/account', 'account')->name('account');
 
-
+// CART
 Route::get('/cart', [CartController::class, 'cart'])->name('cart');
 Route::post('/cart/add/{id}', [CartController::class, 'add'])->name('cart.add');
 Route::post('/cart/update/{id}', [CartController::class, 'update'])->name('cart.update');
 Route::post('/cart/remove/{id}', [CartController::class, 'remove'])->name('cart.remove');
+
 Route::get('/checkout', function () {
     $cart = session()->get('cart', []);
+
     if (empty($cart)) {
         return redirect()->route('cart')->with('error', 'Your cart is empty.');
     }
-
-    session()->forget('cart');
 
     return view('checkout', ['cart' => $cart]);
 })
 ->middleware('auth')
 ->name('checkout');
-Route::post('/checkout/apply-promo', [CartController::class, 'applyPromo'])->name('checkout.applyPromo');
+
+Route::post('/checkout/finish', [CheckoutController::class, 'finish'])->name('checkout.finish');
 
 
 
@@ -51,5 +52,3 @@ Route::middleware('auth')->group(function () {
 
 Route::get('/homepage', function () {
 })->middleware('auth')->name('/homepage');
-
-
