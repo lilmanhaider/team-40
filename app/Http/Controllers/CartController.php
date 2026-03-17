@@ -19,6 +19,14 @@ class CartController extends Controller
 
         $cart = $request->session()->get('cart', []);
 
+        // Current quantity in cart
+        $currentQty = isset($cart[$id]) ? $cart[$id]['quantity'] : 0;
+
+        // ❗ Check stock before adding
+        if ($currentQty >= $product->stockQuantity) {
+            return redirect()->back()->with('error', 'Not enough stock available');
+        }
+
         if (isset($cart[$id])) {
             $cart[$id]['quantity'] += 1;
         } else {
@@ -38,12 +46,21 @@ class CartController extends Controller
     public function update(Request $request, $id)
     {
         $cart = $request->session()->get('cart', []);
-
         $quantity = (int) $request->quantity;
 
+        $product = Product::findOrFail($id);
+
+        // Remove item if quantity < 1
         if ($quantity < 1) {
             unset($cart[$id]);
         } else {
+
+            // ❗ Prevent exceeding stock
+            if ($quantity > $product->stockQuantity) {
+                return redirect()->route('cart')
+                    ->with('error', 'Not enough stock available');
+            }
+
             $cart[$id]['quantity'] = $quantity;
         }
 
