@@ -57,3 +57,4 @@ Route::middleware('auth')->group(function () {
 
 Route::get('/homepage', function () {
 })->middleware('auth')->name('/homepage');
+
