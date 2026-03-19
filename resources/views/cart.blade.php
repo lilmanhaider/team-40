@@ -256,41 +256,64 @@
     @else
 
         <table class="cart-table">
-            <tr>
-                <th style="width:40%;">Product</th>
-                <th style="width:15%;">Price</th>
-                <th style="width:15%;">Quantity</th>
-                <th style="width:30%;">Actions</th>
-            </tr>
+    <tr>
+        <th style="width:45%;">Product</th>
+        <th style="width:15%;">Price</th>
+        <th style="width:15%;">Quantity</th>
+        <th style="width:25%;">Actions</th>
+    </tr>
 
-            @foreach ($cart as $id => $item)
-                <tr>
-                    <td>{{ $item['name'] }}</td>
-                    <td>£{{ number_format($item['price'], 2) }}</td>
-                    <td>{{ $item['quantity'] }}</td>
-                    <td>
-                        <div class="cart-actions">
-                            <form action="{{ route('cart.update', $id) }}" method="POST">
-                                @csrf
-                                <input type="hidden" name="quantity" value="{{ $item['quantity'] - 1 }}">
-                                <button type="submit" class="btn btn-qty">-</button>
-                            </form>
+    @foreach ($cart as $id => $item)
 
-                            <form action="{{ route('cart.update', $id) }}" method="POST">
-                                @csrf
-                                <input type="hidden" name="quantity" value="{{ $item['quantity'] + 1 }}">
-                                <button type="submit" class="btn btn-qty">+</button>
-                            </form>
+        @php
+            $product = \App\Models\Product::find($item['id']);
+        @endphp
 
-                            <form action="{{ route('cart.remove', $id) }}" method="POST">
-                                @csrf
-                                <button type="submit" class="btn btn-remove">Remove</button>
-                            </form>
-                        </div>
-                    </td>
-                </tr>
-            @endforeach
-        </table>
+        <tr>
+            <td style="display:flex; align-items:center; gap:10px;">
+                
+                @if($product && $product->image)
+                    <img 
+                        src="{{ asset('images/products/' . $product->image) }}" 
+                        style="width:50px; height:50px; object-fit:cover; border-radius:6px;"
+                    >
+                @else
+                    <img 
+                        src="{{ asset('images/products/default.png') }}" 
+                        style="width:50px; height:50px; object-fit:cover; border-radius:6px;"
+                    >
+                @endif
+
+                {{ $item['name'] }}
+            </td>
+
+            <td>£{{ number_format($item['price'], 2) }}</td>
+
+            <td>{{ $item['quantity'] }}</td>
+
+            <td>
+                <div class="cart-actions">
+                    <form action="{{ route('cart.update', $id) }}" method="POST">
+                        @csrf
+                        <input type="hidden" name="quantity" value="{{ $item['quantity'] - 1 }}">
+                        <button type="submit" class="btn btn-qty">-</button>
+                    </form>
+
+                    <form action="{{ route('cart.update', $id) }}" method="POST">
+                        @csrf
+                        <input type="hidden" name="quantity" value="{{ $item['quantity'] + 1 }}">
+                        <button type="submit" class="btn btn-qty">+</button>
+                    </form>
+
+                    <form action="{{ route('cart.remove', $id) }}" method="POST">
+                        @csrf
+                        <button type="submit" class="btn btn-remove">Remove</button>
+                    </form>
+                </div>
+            </td>
+        </tr>
+    @endforeach
+</table>
 
         <div class="cart-footer">
             <div class="cart-links">
