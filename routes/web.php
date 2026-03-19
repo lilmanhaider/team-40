@@ -53,6 +53,7 @@ Route::middleware('auth')->group(function () {
 
     Route::get('/admin/orders', [OrderController::class, 'adminOrders'])->name('admin.orders');
     Route::post('/admin/orders/{id}/status', [OrderController::class, 'updateStatus'])->name('admin.orders.updateStatus');
+    Route::get('/admin/dashboard', [AdminController::class, 'dashboard'])->name('admin.dashboard');
 });
 
 Route::get('/homepage', function () {
