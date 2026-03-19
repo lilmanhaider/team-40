@@ -81,4 +81,15 @@ class CartController extends Controller
 
         return redirect()->route('cart')->with('success', 'Item removed!');
     }
+    public function applyPromo(Request $request)
+{
+    $code = strtoupper($request->promo_code);
+
+    if ($code === 'TEAM40') {
+        session()->put('discount', 0.10);
+        return redirect()->back()->with('success', 'Promo code applied!');
+    }
+
+    return redirect()->back()->with('error', 'Invalid promo code');
+}
 }
