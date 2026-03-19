@@ -15,24 +15,60 @@
           background:#f5f6fa;
         }
 
-        .checkout-page{
-          max-width:950px;
-          margin:40px auto;
-          padding:24px 28px;
+        nav{
+          width:100%;
+          padding:16px 8%;
+          display:flex;
+          align-items:center;
+          justify-content:space-between;
+          background:white;
+          border-bottom:1px solid #eee;
+          position:sticky;
+          top:0;
+          z-index:999;
         }
 
-        .checkout-card{
+        nav .logo img{
+          height:55px;
+          width:auto;
+        }
+
+        nav ul{
+          margin-left:auto;
+          display:flex;
+          gap:30px;
+          list-style:none;
+          align-items:center;
+        }
+
+        nav ul li a{
+          text-decoration:none;
+          color:#444;
+          font-size:1rem;
+          transition:0.3s;
+          display:flex;
+          align-items:center;
+          gap:4px;
+        }
+
+        nav ul li a:hover{
+          color:#0077ff;
+        }
+
+        .checkout-page{
+          max-width:900px;
+          margin:40px auto;
+          padding:24px 28px;
           background:white;
-          border-radius:16px;
+          border-radius:12px;
           box-shadow:0 8px 24px rgba(0,0,0,0.06);
-          padding:28px;
         }
 
         .checkout-header{
           display:flex;
           justify-content:space-between;
           align-items:flex-end;
-          margin-bottom:20px;
+          margin-bottom:16px;
         }
 
         .checkout-header h1{
@@ -46,28 +82,9 @@
           margin-top:4px;
         }
 
-        .alert{
-          padding:12px 14px;
-          border-radius:10px;
-          font-size:0.9rem;
-          margin-bottom:16px;
-        }
-
-        .alert-success{
-          background:#e6f7e9;
-          color:#237804;
-          border:1px solid #b7eb8f;
-        }
-
-        .alert-error{
-          background:#fff1f0;
-          color:#a8071a;
-          border:1px solid #ffa39e;
-        }
-
         .empty-checkout{
           text-align:center;
-          padding:50px 20px;
+          padding:40px 0 10px;
           font-size:1rem;
           color:#555;
         }
@@ -81,81 +98,34 @@
           text-decoration:underline;
         }
 
-        .checkout-items{
-          display:flex;
-          flex-direction:column;
-          gap:14px;
+        .checkout-table{
+          width:100%;
+          border-collapse:collapse;
           margin-top:10px;
         }
 
-        .checkout-item{
-          display:flex;
-          align-items:center;
-          gap:16px;
-          padding:16px;
-          border:1px solid #eee;
-          border-radius:14px;
-          background:#fcfcfc;
-          transition:0.25s ease;
+        .checkout-table th,
+        .checkout-table td{
+          padding:12px 10px;
+          text-align:left;
+          font-size:0.95rem;
         }
 
-        .checkout-item:hover{
-          transform:translateY(-3px);
-          box-shadow:0 8px 18px rgba(0,0,0,0.08);
+        .checkout-table th{
+          background:#f5f5f5;
+          color:#555;
+          border-bottom:1px solid #e5e5e5;
         }
 
-        .checkout-item img{
-          width:84px;
-          height:84px;
-          object-fit:cover;
-          border-radius:12px;
-          background:#f3f3f3;
-          flex-shrink:0;
-        }
-
-        .checkout-item-info{
-          flex:1;
-          min-width:0;
-        }
-
-        .checkout-item-name{
-          font-size:1rem;
-          font-weight:600;
-          color:#222;
-          margin-bottom:6px;
-        }
-
-        .checkout-item-meta{
-          font-size:0.9rem;
-          color:#777;
-          line-height:1.5;
-        }
-
-        .checkout-item-price{
-          text-align:right;
-          min-width:120px;
-        }
-
-        .checkout-item-price .subtotal{
-          font-size:1rem;
-          font-weight:600;
-          color:#222;
-        }
-
-        .checkout-item-price .unit-price{
-          font-size:0.85rem;
-          color:#777;
-          margin-top:4px;
+        .checkout-table tr:nth-child(even){
+          background:#fafafa;
         }
 
         .checkout-total{
-          margin-top:24px;
-          padding-top:18px;
-          border-top:1px solid #eee;
+          margin-top:18px;
+          font-size:1.05rem;
+          font-weight:600;
           text-align:right;
-          font-size:1.15rem;
-          font-weight:700;
-          color:#222;
         }
 
         .checkout-footer{
@@ -168,7 +138,7 @@
         }
 
         .checkout-links a{
-          font-size:0.95rem;
+          font-size:0.9rem;
           color:#0077ff;
           text-decoration:none;
         }
@@ -178,13 +148,15 @@
         }
 
         .btn-finish{
-          padding:11px 20px;
+          padding:10px 18px;
           border-radius:999px;
           border:none;
-          font-size:0.92rem;
+          font-size:0.9rem;
           cursor:pointer;
           background:#50ce29;
           color:#fff;
+          text-decoration:none;
+          display:inline-block;
           transition:0.2s;
         }
 
@@ -195,81 +167,68 @@
 </head>
 <body>
 
-@include('nav')
+<nav>
+  @include('nav')
+</nav>
 
 <div class="checkout-page">
-    <div class="checkout-card">
 
-        <div class="checkout-header">
-            <div>
-                <h1>Checkout Summary</h1>
-                <p class="checkout-subtitle">Review your order details.</p>
-            </div>
+    <div class="checkout-header">
+        <div>
+            <h1>Checkout Summary</h1>
+            <p class="checkout-subtitle">Review your order details.</p>
         </div>
+    </div>
 
-        @if (session('success'))
-            <div class="alert alert-success">{{ session('success') }}</div>
-        @endif
+    @if (empty($cart))
+        <div class="empty-checkout">
+            <p>No items in cart.</p>
+            <p><a href="{{ route('product') }}">Back to products</a></p>
+        </div>
+    @else
 
-        @if (session('error'))
-            <div class="alert alert-error">{{ session('error') }}</div>
-        @endif
-
-        @if (empty($cart))
-            <div class="empty-checkout">
-                <p>No items in cart.</p>
-                <p><a href="{{ route('product') }}">Back to products</a></p>
-            </div>
-        @else
+        <table class="checkout-table">
+            <tr>
+                <th style="width:40%;">Product</th>
+                <th style="width:20%;">Price</th>
+                <th style="width:20%;">Quantity</th>
+                <th style="width:20%;">Subtotal</th>
+            </tr>
 
             @php $total = 0; @endphp
 
-            <div class="checkout-items">
-                @foreach ($cart as $item)
-                    @php
-                        $product = \App\Models\Product::find($item['id']);
-                        $subtotal = $item['price'] * $item['quantity'];
-                        $total += $subtotal;
-                    @endphp
+            @foreach ($cart as $item)
+                @php
+                    $subtotal = $item['price'] * $item['quantity'];
+                    $total += $subtotal;
+                @endphp
 
-                    <div class="checkout-item">
-                        @if($product && $product->image)
-                            <img src="{{ asset('images/products/' . $product->image) }}" alt="{{ $item['name'] }}">
-                        @else
-                            <img src="{{ asset('images/products/default.png') }}" alt="Product image">
-                        @endif
+                <tr>
+                    <td>{{ $item['name'] }}</td>
+                    <td>£{{ number_format($item['price'], 2) }}</td>
+                    <td>{{ $item['quantity'] }}</td>
+                    <td>£{{ number_format($subtotal, 2) }}</td>
+                </tr>
+            @endforeach
+        </table>
 
-                        <div class="checkout-item-info">
-                            <div class="checkout-item-name">{{ $item['name'] }}</div>
-                            <div class="checkout-item-meta">
-                                Quantity: {{ $item['quantity'] }}
-                            </div>
-                        </div>
+        <p class="checkout-total">Total Price: £{{ number_format($total, 2) }}</p>
 
-                        <div class="checkout-item-price">
-                            <div class="subtotal">£{{ number_format($subtotal, 2) }}</div>
-                            <div class="unit-price">£{{ number_format($item['price'], 2) }} each</div>
-                        </div>
-                    </div>
-                @endforeach
+        <div class="checkout-footer">
+            <div class="checkout-links">
+                <a href="{{ route('cart') }}">← Back to cart</a>
             </div>
 
-            <p class="checkout-total">Total Price: £{{ number_format($total, 2) }}</p>
+           <form action="{{ route('checkout.finish') }}" method="POST">
+    @csrf
+    <button type="submit" class="btn-finish">
+        Finish
+    </button>
+</form>
+        </div>
 
-            <div class="checkout-footer">
-                <div class="checkout-links">
-                    <a href="{{ route('cart') }}">← Back to cart</a>
-                </div>
+    @endif
 
-                <form action="{{ route('checkout.finish') }}" method="POST">
-                    @csrf
-                    <button type="submit" class="btn-finish">Finish</button>
-                </form>
-            </div>
-
-        @endif
-
-    </div>
 </div>
 
 </body>
