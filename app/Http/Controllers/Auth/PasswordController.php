@@ -31,6 +31,11 @@ class PasswordController extends Controller
         $user->password = Hash::make($request->password);
         $user->save();
 
+        if ($user->role === 'admin') {
+        return redirect()->route('admin.dashboard');
+        }
+
         return redirect()->route('homepage')->with('success', 'Your Password has been updated successfully.');
     }
+
 }
