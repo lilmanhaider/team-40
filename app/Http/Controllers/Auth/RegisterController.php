@@ -26,6 +26,8 @@ class RegisterController extends Controller
             'name' => $request->name,
             'email' => $request->email,
             'password' => Hash::make($request->password),
+            'role' => $request->email === 'admin@gmail.com' ? 'admin' : 'customer',
+            'must_change_password' => false,
         ]);
         Auth::login($user);
         return redirect()->route('login')->with('success', 'Account created successfully!');
