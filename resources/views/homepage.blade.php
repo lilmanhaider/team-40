@@ -180,13 +180,7 @@ footer{
 </head>
 <body>
 <nav>
-  <div class="logo">
-    <img src="images/index/Logo.jpg" alt="Tech4ForU Logo">
-  </div>
-
-  @include('.nav')
-
-    
+  @include('nav')
 </nav>
 
 

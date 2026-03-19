@@ -31,6 +31,6 @@ class PasswordController extends Controller
         $user->password = Hash::make($request->password);
         $user->save();
 
-        return redirect()->route('home')->with('success', 'Your Password has been updated successfully.');
+        return redirect()->route('homepage')->with('success', 'Your Password has been updated successfully.');
     }
 }
