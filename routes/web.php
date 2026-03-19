@@ -59,4 +59,5 @@ Route::middleware('auth')->group(function () {
 Route::get('/homepage', function () {
 })->middleware('auth')->name('/homepage');
 
-Route::post('/apply-promo', [CartController::class, 'applyPromo'])->name('promo.apply');
+Route::post('/promo/apply', [CartController::class, 'applyPromo'])->name('promo.apply');
+Route::post('/promo/remove', [CartController::class, 'removePromo'])->name('promo.remove');

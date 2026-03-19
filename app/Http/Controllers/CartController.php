@@ -92,4 +92,10 @@ class CartController extends Controller
 
     return redirect()->back()->with('error', 'Invalid promo code');
 }
+
+public function removePromo()
+{
+    session()->forget('discount');
+    return back()->with('success', 'Promo code removed');
+}
 }
