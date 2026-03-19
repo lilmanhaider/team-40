@@ -18,7 +18,9 @@
             <li><a href="{{ route('logout') }}">Logout</a></li>
             <li><a href="{{ route('password.change') }}">Password</a></li>
             <li><a href="{{ route('orders') }}">Orders</a></li>
-            <li><a href="{{ route('admin.orders') }}">Admin</a></li>
+            @if (Auth::user()->role === 'admin')
+                <li><a href="{{ route('admin.dashboard') }}">Admin</a></li>
+            @endif
             
         @else
             <li><a href="{{ route('login') }}">Login</a></li>
