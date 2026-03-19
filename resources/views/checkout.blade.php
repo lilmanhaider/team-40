@@ -187,30 +187,51 @@
         </div>
     @else
 
-        <table class="checkout-table">
-            <tr>
-                <th style="width:40%;">Product</th>
-                <th style="width:20%;">Price</th>
-                <th style="width:20%;">Quantity</th>
-                <th style="width:20%;">Subtotal</th>
-            </tr>
+       <table class="checkout-table">
+    <tr>
+        <th style="width:45%;">Product</th>
+        <th style="width:15%;">Price</th>
+        <th style="width:20%;">Quantity</th>
+        <th style="width:20%;">Subtotal</th>
+    </tr>
 
-            @php $total = 0; @endphp
+    @php $total = 0; @endphp
 
-            @foreach ($cart as $item)
-                @php
-                    $subtotal = $item['price'] * $item['quantity'];
-                    $total += $subtotal;
-                @endphp
+    @foreach ($cart as $item)
 
-                <tr>
-                    <td>{{ $item['name'] }}</td>
-                    <td>£{{ number_format($item['price'], 2) }}</td>
-                    <td>{{ $item['quantity'] }}</td>
-                    <td>£{{ number_format($subtotal, 2) }}</td>
-                </tr>
-            @endforeach
-        </table>
+        @php
+            $product = \App\Models\Product::find($item['id']);
+            $subtotal = $item['price'] * $item['quantity'];
+            $total += $subtotal;
+        @endphp
+
+        <tr>
+            <td style="display:flex; align-items:center; gap:10px;">
+
+                @if($product && $product->image)
+                    <img 
+                        src="{{ asset('images/products/' . $product->image) }}" 
+                        style="width:50px; height:50px; object-fit:cover; border-radius:6px;"
+                    >
+                @else
+                    <img 
+                        src="{{ asset('images/products/default.png') }}" 
+                        style="width:50px; height:50px; object-fit:cover; border-radius:6px;"
+                    >
+                @endif
+
+                {{ $item['name'] }}
+            </td>
+
+            <td>£{{ number_format($item['price'], 2) }}</td>
+
+            <td>{{ $item['quantity'] }}</td>
+
+            <td>£{{ number_format($subtotal, 2) }}</td>
+        </tr>
+
+    @endforeach
+</table>
 
         <p class="checkout-total">Total Price: £{{ number_format($total, 2) }}</p>
 
