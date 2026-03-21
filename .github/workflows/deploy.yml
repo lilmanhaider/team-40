@@ -1,0 +1,55 @@
+
+:sob:
+Click to react
+:thumbsup:
+Click to react
+:joy:
+Click to react
+Add Reaction
+Edit
+Forward
+More
+NEW
+
+don [HESI], HESI — 16:37Saturday, 21 March 2026 16:37
+name: Deploy to Server
+
+on:
+  push:
+    branches:
+      
+deployed-website,
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      
+name: Checkout code
+      uses: actions/checkout@v3,
+
+      
+name: Setup SSH
+      run: |
+        echo "${{ secrets.SSH_PRIVATE_KEY }}" | base64 -d > /tmp/ssh_key
+        chmod 600 /tmp/ssh_key,
+
+      
+name: Deploy via SSH
+      uses: appleboy/ssh-action@v1.0.0
+      with:
+        host: ${{ secrets.SSH_HOST }}
+        username: ${{ secrets.SSH_USERNAME }}
+        key_path: /tmp/ssh_key
+        script: |
+          cd ~/public_html
+          git fetch origin deployed-website
+          git reset --hard origin/deployed-website
+          composer install --no-dev --optimize-autoloader
+          php artisan migrate --force
+          php artisan config:clear
+          php artisan cache:clear
+          php artisan optimize:clear
+          npm install
+          npm run build
+          echo "Deployed!"
