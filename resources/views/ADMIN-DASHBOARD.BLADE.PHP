@@ -118,6 +118,8 @@
 
         <div class="links">
             <a href="{{ route('admin.orders') }}">Manage Orders</a>
+            <a href="{{ route('admin.customers') }}"> Manage Customers</a>
+            <a href="{{ route('admin.products') }}"> Manage Products</a>
         </div>
     </div>
 

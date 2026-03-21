@@ -5,7 +5,7 @@
     <title>Change Your Password</title>
 </head>
 <body>
-
+     
     <h1>Change Your Password</h1>
 
     @if (session('success'))
@@ -23,6 +23,7 @@
             </ul>
         </div>
     @endif
+    
 
     <form method="POST" action="{{ route('password.update') }}">
         @csrf

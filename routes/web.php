@@ -9,6 +9,8 @@ use App\Http\Controllers\CartController;
 use App\Http\Controllers\CheckoutController;
 use App\Http\Controllers\OrderController;
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\AdminCustomerController;
+use App\Http\Controllers\AdminProductController;
 
 Route::view('/', 'homepage')->name('homepage');
 
@@ -51,11 +53,28 @@ Route::middleware('auth')->group(function () {
     Route::get('/password/change', [PasswordController::class, 'showChangeForm'])->name('password.change');
     Route::post('/password/change', [PasswordController::class, 'update'])->name('password.update');
     Route::get('/orders', [OrderController::class, 'orders'])->name('orders');
-
+    //admin orders section
     Route::get('/admin/orders', [OrderController::class, 'adminOrders'])->name('admin.orders');
     Route::post('/admin/orders/{id}/status', [OrderController::class, 'updateStatus'])->name('admin.orders.updateStatus');
+
     Route::get('/admin/dashboard', [AdminController::class, 'dashboard'])->name('admin.dashboard');
-});
+
+    //admin customer section
+    Route::get('/admin/customers', [AdminCustomerController::class, 'index'])->name('admin.customers');
+    Route::get('/admin/customers/create', [AdminCustomerController::class, 'create'])->name('admin.customers.create');
+    Route::post('/admin/customers/store', [AdminCustomerController::class, 'store'])->name('admin.customers.store');
+    Route::get('/admin/customers/{id}/edit', [AdminCustomerController::class, 'edit'])->name('admin.customers.edit');
+    Route::post('/admin/customers/{id}/update', [AdminCustomerController::class, 'update'])->name('admin.customers.update');
+    Route::post('/admin/customers/{id}/delete', [AdminCustomerController::class, 'destroy'])->name('admin.customers.delete');
+
+    //admin products section
+    Route::get('/admin/products', [AdminProductController::class, 'index'])->name('admin.products');
+    Route::get('/admin/products/create', [AdminProductController::class, 'create'])->name('admin.products.create');
+    Route::post('/admin/products/store', [AdminProductController::class, 'store'])->name('admin.products.store');
+    Route::get('/admin/products/{id}/edit', [AdminProductController::class, 'edit'])->name('admin.products.edit');
+    Route::post('/admin/products/{id}/update', [AdminProductController::class, 'update'])->name('admin.products.update');
+    Route::post('/admin/products/{id}/delete', [AdminProductController::class, 'destroy'])->name('admin.products.delete');
+    });
 
 Route::get('/homepage', function () {
 })->middleware('auth')->name('/homepage');
