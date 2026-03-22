@@ -1,63 +1,9 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-    <nav>
-     @include('nav')
-    </nav>
-    <style>
-    nav{
-  width:100%;
-  padding:16px 8%;
-  display:flex;
-  align-items:center;
-  justify-content:space-between;
-  background:white;
-  border-bottom:1px solid #eee;
-  position:sticky;
-  top:0;
-  z-index:999;
-}
-
-nav .logo{
-  display:flex;
-  align-items:center;
-  gap:10px;
-}
-
-nav .logo img{
-  height:55px;
-  width:auto;
-}
-
-nav ul{
-  margin-left:auto;
-  display:flex;
-  gap:30px;
-  list-style:none;
-  align-items:center;
-}
-
-nav ul li a{
-  text-decoration:none;
-  color:#444;
-  font-size:1rem;
-  transition:0.3s;
-  display:flex;
-  align-items:center;
-  gap:4px;
-}
-
-nav ul li a:hover{
-  color:#0077ff;
-}
-
-.nav-icon{
-  font-size:1.05rem;
-}
-</style>
-
->>>>>>> 4980830151691f777a801e82a0301d6806d232c2
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Log In</title>
     
 <style>
 *{
