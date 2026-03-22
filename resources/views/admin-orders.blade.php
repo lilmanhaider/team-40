@@ -124,6 +124,7 @@
                         <option value="Processing" {{ $order->status == 'Processing' ? 'selected' : '' }}>Processing</option>
                         <option value="Shipped" {{ $order->status == 'Shipped' ? 'selected' : '' }}>Shipped</option>
                         <option value="Delivered" {{ $order->status == 'Delivered' ? 'selected' : '' }}>Delivered</option>
+                        <option value="Returning" {{ $order->status == 'Returning' ? 'selected' : '' }}>Returning</option>
                         <option value="Returned" {{ $order->status == 'Returned' ? 'selected' : '' }}>Returned</option>
                     </select>
                     <button type="submit">Update</button>
