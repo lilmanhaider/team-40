@@ -5,11 +5,49 @@
     <title>Create an Account</title>
 
     <style>
+        *{
+            margin:0;
+            padding:0;
+            box-sizing:border-box;
+            font-family:"Poppins",sans-serif;
+        }
+
         body {
-            font-family: Arial, sans-serif;
             background: #f7f7f7;
-            margin: 0;
-            padding: 0;
+        }
+
+        nav{
+            width:100%;
+            padding:16px 8%;
+            display:flex;
+            align-items:center;
+            justify-content:space-between;
+            background:white;
+            border-bottom:1px solid #eee;
+            position:sticky;
+            top:0;
+            z-index:999;
+        }
+
+        nav .logo img{
+            height:55px;
+            width:auto;
+        }
+
+        nav ul{
+            margin-left:auto;
+            display:flex;
+            gap:30px;
+            list-style:none;
+        }
+
+        nav ul li a{
+            text-decoration:none;
+            color:#444;
+        }
+
+        nav ul li a:hover{
+            color:#0077ff;
         }
 
         .register-container {
@@ -32,6 +70,7 @@
             display: block;
             font-weight: bold;
             margin-top: 12px;
+            margin-bottom: 6px;
             color: #444;
         }
 
@@ -42,7 +81,6 @@
             padding: 12px;
             border: 1px solid #ddd;
             border-radius: 6px;
-            margin-top: 6px;
             font-size: 1rem;
         }
 
@@ -79,14 +117,27 @@
             border: 1px solid #a8e6b7;
             color: #256029;
         }
+
+        .login-link {
+            text-align:center;
+            margin-top:20px;
+        }
+
+        .login-link a{
+            text-decoration:none;
+            color:#0077ff;
+        }
+
+        .login-link a:hover{
+            text-decoration:underline;
+        }
     </style>
 </head>
-
 <body>
+
     @include('nav')
+
     <div class="register-container">
-    <nav>
-    </nav>
         <h1>Create an Account</h1>
 
         @if (session('success'))
@@ -121,14 +172,11 @@
             <input type="password" name="password_confirmation" id="password_confirmation" required>
 
             <button type="submit">Register</button>
-
         </form>
-
     </div>
-    <p style="text-align:center">
-        <a href="{{ route('login') }}">
-            Have an account? Login here:
-        </a>
+
+    <p class="login-link">
+        <a href="{{ route('login') }}">Have an account? Login here</a>
     </p>
 
 </body>
