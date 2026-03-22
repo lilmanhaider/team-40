@@ -203,25 +203,31 @@ footer{
 <div class="card-container">
 
   <div class="card">
-    <h3>Consulting</h3>
-    <p>Expert tailored advice to accelerate your goals.</p>
+    <h3>Tech Sales</h3>
+    <p>Laptops, PCs, phones, TVs
+      Kitchen appliances (fridges, washing machines, ovens)
+      Gaming gear, accessories, smart home tech.</p>
   </div>
 
   <div class="card">
-    <h3>Design</h3>
-    <p>Clean and modern UI and UX built for conversion.</p>
+    <h3>Repairs & Tech Support</h3>
+    <p>Device repairs (phones, laptops, appliances)
+      Online “Knowhow” support team
+      Troubleshooting and setup help.</p>
   </div>
 
   <div class="card">
-    <h3>Development</h3>
-    <p>Modern applications delivered with speed and quality.</p>
+    <h3>Delivery and Instalation</h3>
+    <p>Home delivery (standard or next-day)
+      Installation services (e.g. washing machines, TVs)
+      Recycling of old appliances.</p>
   </div>
 
 </div>
 
 
 <footer>
-  © 2025 MyWebsite — All rights reserved.
+  © 2025 Tech4ForU — All rights reserved.
 </footer>
 
 </body>
