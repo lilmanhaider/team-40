@@ -11,10 +11,12 @@ use App\Http\Controllers\OrderController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\AdminCustomerController;
 use App\Http\Controllers\AdminProductController;
+use App\Http\Controllers\ReviewController;
 
 Route::view('/', 'homepage')->name('homepage');
 
 Route::get('/product', [ProductController::class, 'index'])->name('product');
+Route::get('/product/{id}', [ProductController::class, 'showReviews'])->name('product.show');
 
 Route::view('/about', 'about')->name('about');
 Route::view('/contact', 'contact')->name('contact');
@@ -81,3 +83,5 @@ Route::get('/homepage', function () {
 
 Route::post('/promo/apply', [CartController::class, 'applyPromo'])->name('promo.apply');
 Route::post('/promo/remove', [CartController::class, 'removePromo'])->name('promo.remove');
+
+Route::post('/reviews', [ReviewController::class, 'create'])->name('reviews.create');

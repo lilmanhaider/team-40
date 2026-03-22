@@ -149,6 +149,8 @@ nav ul li a:hover{
 }
 .product-card {
   transition: transform 0.25s ease, box-shadow 0.25s ease;
+  text-decoration: none;
+  color: inherit;
 }
 
 .product-card:hover {
@@ -188,7 +190,7 @@ nav ul li a:hover{
 
 <div class="product-grid" id="productGrid">
   @forelse ($products as $product)
-      <div
+      <a href="/product/{{ $product->id }}"
         class="product-card"
         data-name="{{ strtolower($product->productName) }}"
         data-description="{{ strtolower($product->description ?? '') }}"
@@ -231,7 +233,7 @@ nav ul li a:hover{
               </button>
           </form>
         </div>
-      </div>
+      </a>
 
   @empty
       <p>No products available.</p>
