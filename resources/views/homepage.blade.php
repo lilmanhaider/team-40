@@ -190,7 +190,7 @@ footer{
 
 <section class="hero">
     <div>
-  <h1>The Best Place to Buy your Gaming Tech & More!</h1>
+  <h1>The Best Place to Buy Gaming Tech & More!</h1>
   <p>Powering Your Gaming Experience, One Upgrade at a Time...</p>
 <a href="{{ route('product') }}" class="shop-btn">We price match any website!</a>
 
