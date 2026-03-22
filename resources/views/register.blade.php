@@ -83,10 +83,9 @@
 </head>
 
 <body>
-    
+    @include('nav')
     <div class="register-container">
     <nav>
-    @include('nav')
     </nav>
         <h1>Create an Account</h1>
 
