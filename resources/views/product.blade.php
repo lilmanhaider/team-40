@@ -232,7 +232,7 @@ nav ul li a:hover{
         data-name="{{ strtolower($product->productName) }}"
         data-description="{{ strtolower($product->description ?? '') }}"
         data-category="{{ strtolower($product->category ?? '') }}"
-        onclick="window.location='{{ route('products.show', $product->id) }}'"
+       
       >
 
         @if($product->image)
