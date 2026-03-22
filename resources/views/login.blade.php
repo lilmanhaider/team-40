@@ -57,13 +57,55 @@ nav ul li a:hover{
 }
 </style>
 
+>>>>>>> 4980830151691f777a801e82a0301d6806d232c2
     
 <style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:"Poppins",sans-serif;
+}
+
 body {
     font-family: Arial, sans-serif;
     background: #f7f7f7;
     margin: 0;
     padding: 0;
+}
+
+nav{
+    width:100%;
+    padding:16px 8%;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    background:white;
+    border-bottom:1px solid #eee;
+    position:sticky;
+    top:0;
+    z-index:999;
+}
+
+nav .logo img{
+    height:55px;
+    width:auto;
+}
+
+nav ul{
+    margin-left:auto;
+    display:flex;
+    gap:30px;
+    list-style:none;
+}
+
+nav ul li a{
+    text-decoration:none;
+    color:#444;
+}
+
+nav ul li a:hover{
+    color:#0077ff;
 }
 
 /* the login box */
@@ -125,39 +167,61 @@ body {
     font-size: 0.9rem;
 }
 
+.login-container label{
+    display:block;
+    margin-top:12px;
+    margin-bottom:6px;
+    color:#333;
+    font-weight:600;
+}
+
+.register-link{
+    text-align:center;
+    margin-top:18px;
+}
+
+.register-link a{
+    text-decoration:none;
+    color:#0077ff;
+}
+
+.register-link a:hover{
+    text-decoration:underline;
+}
 </style>
 </head>
 
 <body>
-    
 
-<div class="login-container">
+    @include('nav')
 
-    <h2>Log In</h2>
+    <div class="login-container">
 
-    @if($errors->any())
-        <div class="error">{{ $errors->first() }}</div>
-    @endif
+        <h2>Log In</h2>
 
-    <form method="POST" action="{{ route('login.post') }}">
-        @csrf
+        @if($errors->any())
+            <div class="error">{{ $errors->first() }}</div>
+        @endif
 
-        <label>Email:</label>
-        <input type="email" name="email" required />
+        <form method="POST" action="{{ route('login.post') }}">
+            @csrf
 
-        <br><br>
+            <label>Email:</label>
+            <input type="email" name="email" required />
 
-        <label>Password:</label>
-        <input type="password" name="password" required />
+            <label>Password:</label>
+            <input type="password" name="password" required />
 
-        <input type="submit" value="Log In" />
-    </form>
-     <p style="text-align:center">
-        <a href="{{ route('register') }}">
-            Dont have an account? Register here:
-        </a>
-    </p>
+            <input type="submit" value="Log In" />
+        </form>
 
-</div>
-    
+        <p class="register-link">
+            <a href="{{ route('register') }}">
+                Dont have an account? Register here:
+            </a>
+        </p>
+
+    </div>
+
+</body>
 </html>
