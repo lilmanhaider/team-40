@@ -1,6 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <nav>
+     @include('nav')
+    </nav>
+    
 <style>
 body {
     font-family: Arial, sans-serif;
@@ -9,6 +13,7 @@ body {
     padding: 0;
 }
 
+/* the login box */
 .login-container {
     width: 340px;
     margin: 80px auto;
@@ -19,6 +24,7 @@ body {
     box-shadow: 0 2px 8px rgba(0,0,0,0.05);
 }
 
+/* title of the login popupp*/
 .login-container h2 {
     margin-top: 0;
     margin-bottom: 20px;
@@ -26,6 +32,7 @@ body {
     color: #333;
 }
 
+/* th text inside the login popup*/
 .login-container input[type="email"],
 .login-container input[type="password"] {
     width: 100%;
@@ -69,9 +76,7 @@ body {
 </head>
 
 <body>
-    <nav>
-     @include('nav')
-    </nav>
+    
 
 <div class="login-container">
 
