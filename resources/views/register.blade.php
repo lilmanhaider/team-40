@@ -83,11 +83,11 @@
 </head>
 
 <body>
+    
+    <div class="register-container">
     <nav>
     @include('nav')
     </nav>
-    <div class="register-container">
-
         <h1>Create an Account</h1>
 
         @if (session('success'))
