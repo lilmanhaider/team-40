@@ -30,7 +30,7 @@ class OrderController extends Controller
     public function updateStatus(Request $request, $id)
     {
         $request->validate([
-            'status' => 'required|in:Pending,Processing,Shipped,Delivered,Returned'
+            'status' => 'required|in:Pending,Processing,Shipped,Delivered,Returning,Returned'
         ]);
 
         $order = Order::findOrFail($id);
