@@ -247,12 +247,12 @@ body {
 </head>
 
 <body>
+    
+
+<div class="login-container">
     <nav>
      @include('nav')
     </nav>
-
-<div class="login-container">
-
     <h2>Log In</h2>
 
     @if($errors->any())
