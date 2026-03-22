@@ -72,6 +72,9 @@ body {
 </head>
 
 <body>
+    <nav>
+     @include('nav')
+    </nav>
 
 <div class="login-container">
 
