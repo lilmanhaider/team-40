@@ -36,6 +36,7 @@ body {
     margin-top: 8px;
 }
 
+/* Submit button */
 .login-container input[type="submit"] {
     width: 100%;
     padding: 12px;
